@@ -1,0 +1,27 @@
+.login {
+  text-align: center;
+  font-family: "Arial";
+}
+
+.login_input {
+  border-width: 2px;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 10px;
+}
+
+#login-button {
+  background-color: rgb(19, 38, 58);
+  font-size: 15px;
+  color: #e6b800;
+}
+
+/* label {
+  color: #e6b800;
+} */
+
+.login_submit {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 2%;
+}

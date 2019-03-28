@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script");
+
+body {
+  background-image: url("../../images/mainbackground.jpg");
+}
+.main-page-heading {
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Arial";
+  margin-bottom: 10px;
+}
+
+#elementary_school,
+#school_name,
+#gradebook {
+  color: #e6b800;
+  font-family: "Dancing Script", cursive;
+}
+
+@media screen and (min-width: 997px){
+    .main {
+        background-color: rgba(0, 0, 0, 0.5);
+        margin-top: 5%;
+        margin-left: 35%;
+        margin-right: 35%;
+        padding: 10px;
+      }
+    
+      h1 {
+        font-size: 70px;
+      }
+      h2 {
+        font-size: 55px;
+      }
+      h3 {
+        font-size: 45px;
+      }
+
+}
+
+@media screen and (max-width: 997px){
+  .main {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2px;
+  }
+}
