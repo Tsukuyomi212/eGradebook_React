@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Login from "./Login";
-import './Main.css';
+import "./Main.css";
 
 class Main extends Component {
-    render() {
-      return (
+  render() {
+    return (
+      <div className="main_background">
         <div className="main">
           <div className="main-page-heading">
             <h3 id="elementary_school">Elementary School</h3>
@@ -13,8 +14,9 @@ class Main extends Component {
           </div>
           <Login />
         </div>
-      );
-    }
+      </div>
+    );
   }
-  
-  export default Main;
+}
+
+export default Main;

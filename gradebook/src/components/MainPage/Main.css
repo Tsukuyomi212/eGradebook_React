@@ -1,7 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Dancing+Script");
 
-body {
+.main_background {
   background-image: url("../../images/mainbackground.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vh;
+  top: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+
 }
 .main-page-heading {
   text-align: center;
