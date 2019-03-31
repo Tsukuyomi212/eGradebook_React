@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0 5% 0 5%;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(230, 172, 0);
+    text-shadow: 1px 1px 2px black;
+    box-shadow: 2px 2px 8px black;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+ul.navbar li {
+    float: right;
+    margin: 4px;
+    padding: 4px;
+}
+
+#loggedin {
+    float: left;
+}
+
+.blue_text {
+    color: rgb(19, 38, 58);
+}

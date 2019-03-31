@@ -1,0 +1,20 @@
+.home_options {
+    text-align: center;
+    font-size: 20px;
+    margin: 1% 20% 1% 20%;
+    padding: 5% 15% 5% 15%;
+    font-family: Arial;
+    font-size: 30px;
+  }
+  
+  .home_background {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: cover;
+    min-height: 100vh;
+    min-width: 100vh;
+    top: 0;
+    right: 0;
+    left: 0;
+    position: absolute;
+  }
+
