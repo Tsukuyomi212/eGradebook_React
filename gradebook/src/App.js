@@ -3,6 +3,7 @@ import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../src/components/MainPage/Main';
 import AdminHome from './components/Admin/AdminHome';
+import AdminProfile from './components/Admin/AdminProfile';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Main}></Route>
               <Route exact path='/admin/home' component={AdminHome}></Route>
+              <Route exact path='/admin/profile' component={AdminProfile}></Route>
             </Switch>
           </Fragment>
         </BrowserRouter>

@@ -1,0 +1,20 @@
+.profile_data {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 5% 15% 10% 15%;
+    padding: 2% 10% 2% 10%;
+    text-align: center;
+    font-family: Arial;
+    font-size: 20px;
+    color: #e6b800;
+
+}
+
+.edit_details {
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.data_font {
+    font-family: "Dancing Script", cursive;
+    font-size: 25px;
+}

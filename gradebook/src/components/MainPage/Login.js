@@ -12,7 +12,8 @@ class Login extends Component {
       password: "",
       errorMessage: "",
       firstName: "",
-      lastName: ""
+      lastName: "", 
+      id: ""
     };
   }
 
@@ -50,9 +51,12 @@ class Login extends Component {
             this.setState({
               errorMessage: "",
               firstName: data.name,
-              lastName: data.surname
+              lastName: data.surname,
+              id: data.UserId
             });
+           
             localStorage.setItem("token", data.access_token);
+            localStorage.setItem("id", data.UserId);
             localStorage.setItem("firstName", data.name);
             localStorage.setItem("lastName", data.surname);
             localStorage.setItem("role", data.role);
