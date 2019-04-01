@@ -13,9 +13,9 @@ class AdminHome extends Component {
             <Header />
             <div className="home_options">
             <p><Link to='/admin/profile' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>My Profile</Link></p>
-            <p><Link to='/admin/usersinfo' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Users Info & Settings</Link></p>
+            <p><Link to='/admin/users' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Users Info & Settings</Link></p>
             <p><Link to='/admin/schoolgradesinfo' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>School Grades Info & Settings</Link></p>
-            <p><Link to='/admin/achoolyearinfo' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>School Year Info & Settings</Link></p>
+            <p><Link to='/admin/schoolyearinfo' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>School Year Info & Settings</Link></p>
             <p><Link to='/admin/loggingdata' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Logging Data</Link></p>
             </div>
         </div>

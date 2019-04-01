@@ -4,6 +4,11 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../src/components/MainPage/Main';
 import AdminHome from './components/Admin/AdminHome';
 import AdminProfile from './components/Admin/AdminProfile';
+import ProfileUpdate from './components/Admin/ProfileUpdate';
+import UserOptions from './components/Users/UsersOptions';
+import TeachersInfoAndSettings from './components/Users/TeachersInfoAndSettings';
+import TeacherDetails from './components/Users/TeacherDetails';
+import TeacherUpdate from './components/Users/TeacherUpdate';
 
 class App extends Component {
   render() {
@@ -15,6 +20,11 @@ class App extends Component {
               <Route exact path='/' component={Main}></Route>
               <Route exact path='/admin/home' component={AdminHome}></Route>
               <Route exact path='/admin/profile' component={AdminProfile}></Route>
+              <Route exact path='/admin/profile/update' component={ProfileUpdate}></Route>
+              <Route exact path='/admin/users' component={UserOptions}></Route>
+              <Route exact path='/admin/users/teachers' component={TeachersInfoAndSettings}></Route>
+              <Route exact path='/admin/users/teachers/:id' component={TeacherDetails}></Route>
+              <Route exact path='/admin/users/teachers/update/:id' component={TeacherUpdate}></Route>
             </Switch>
           </Fragment>
         </BrowserRouter>
