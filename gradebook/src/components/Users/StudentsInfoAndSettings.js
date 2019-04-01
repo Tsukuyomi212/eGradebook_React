@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import { GETTEACHERS } from "../../services/api";
+import { GETSTUDENTS } from "../../services/api";
 import { Link } from "react-router-dom";
 
 class TeachersInfoAndSettings extends Component {
@@ -18,12 +18,13 @@ class TeachersInfoAndSettings extends Component {
         Authorization: "Bearer  " + localStorage.getItem("token")
       }
     };
-    fetch(GETTEACHERS, requestOptions)
+    fetch(GETSTUDENTS, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
             data.sort(checkOrder);
-            this.setState({ users: data })});
+            this.setState({ users: data });
+          });
         } else {
           response.text().then(message => alert(message));
         }
@@ -31,20 +32,25 @@ class TeachersInfoAndSettings extends Component {
       .catch(error => console.log(error));
   }
 
-
   render() {
     const { history } = this.props;
     return (
       <div>
         <Header />
         <div>
-            <Link to='/admin/users'>Back to all users</Link>
-            <Link>Register new teacher</Link>
-          <p>Teachers:</p>
+          <Link to="/admin/users">Back to all users</Link>
+          <Link>Register new student</Link>
+          <p>Students:</p>
           {this.state.users.map(user => (
             <p key={user.id}>
-              <span>{user.lastName}, {user.firstName}</span>
-              <button onClick={() => history.push('/admin/users/teachers/' + user.id)}>See Details</button>
+              <span>
+                {user.lastName}, {user.firstName}
+              </span>
+              <button
+                onClick={() => history.push("/admin/users/students/" + user.id)}
+              >
+                See Details
+              </button>
             </p>
           ))}
         </div>
