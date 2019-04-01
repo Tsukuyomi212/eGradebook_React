@@ -11,6 +11,7 @@ import TeacherDetails from './components/Users/TeacherDetails';
 import TeacherUpdate from './components/Users/TeacherUpdate';
 import StudentsInfoAndSettings from './components/Users/StudentsInfoAndSettings';
 import StudentDetails from './components/Users/StudentDetails';
+import StudentUpdate from './components/Users/StudentUpdate';
 
 class App extends Component {
   render() {
@@ -33,6 +34,7 @@ class App extends Component {
 
               <Route exact path='/admin/users/students' component={StudentsInfoAndSettings}></Route>
               <Route exact path='/admin/users/students/:id' component={StudentDetails}></Route>
+              <Route exact path='/admin/users/students/update/:id' component={StudentUpdate}></Route>
             </Switch>
           </Fragment>
         </BrowserRouter>
