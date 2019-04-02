@@ -1,20 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Header from '../common/Header';
-import Footer from '../common/Footer';
+//import Footer from '../common/Footer';
+
+const linkStyle = {
+  textDecoration: 'none', 
+  color: 'rgb(230, 172, 0)'
+}
 
 const UserOptions = props => {
   return (
-    <div>
+    <div className="home_background">
       <Header />
-      <div>
-        <Link to="/admin/users/teachers">Teachers</Link>
+      <div className="home_options">
+        <Link to="/users/teachers" style={linkStyle}>Teachers</Link>
         <br />
-        <Link to="/admin/users/students">Students</Link>
         <br />
-        <Link to="/admin/users/parents">Parents</Link>
+        <Link to="/users/students" style={linkStyle}>Students</Link>
+        <br />
+        <br />
+        <Link to="/users/parents" style={linkStyle}>Parents</Link>
       </div>
-      <Footer />
     </div>
   );
 };

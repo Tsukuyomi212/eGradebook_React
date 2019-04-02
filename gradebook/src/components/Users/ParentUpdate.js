@@ -82,7 +82,7 @@ class ParentUpdate extends Component {
         event.preventDefault();
       };
     
-      goBack = () => this.props.history.push("/admin/users/parents/" + this.state.id);
+      goBack = () => this.props.history.push("/users/parents/" + this.state.id);
     
       render() {
     

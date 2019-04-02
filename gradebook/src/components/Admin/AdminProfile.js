@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import Footer from "../common/Footer";
+//import Footer from "../common/Footer";
 import Header from "../common/Header";
 import { ADMINPROFILE } from "../../services/api";
 import "../common/ProfilePage.css";
@@ -125,6 +125,7 @@ class AdminProfile extends Component {
               Edit details
             </Link>
             <br></br>
+            <br></br>
             <Link
               to='/admin/home'
               style={{ textDecoration: "none", color: "rgb(230, 172, 0)", fontSize:"20px" }}
@@ -132,7 +133,6 @@ class AdminProfile extends Component {
               Back
             </Link>
           </div>
-          <Footer />
         </div>
       );
   

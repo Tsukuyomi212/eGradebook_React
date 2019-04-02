@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ADMINPROFILE } from "../../services/api";
+import Header from "../common/Header";
 
 class ProfileUpdate extends Component {
   constructor(props) {
@@ -86,6 +87,8 @@ class ProfileUpdate extends Component {
 
     return (
       <div>
+        <Header />
+        <div className="profile_data">
         <form onSubmit={this.handleSubmit}>
           <p>
             <span className="data_font">First name:</span>
@@ -135,6 +138,7 @@ class ProfileUpdate extends Component {
             Cancel
           </button>
         </form>
+        </div>
       </div>
     );
   }

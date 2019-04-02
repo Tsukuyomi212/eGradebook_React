@@ -8,3 +8,7 @@ export const ADMINPROFILE = `${BASE}/api/admins/`;
 export const GETTEACHERS = `${BASE}/api/teachers`;
 export const GETSTUDENTS = `${BASE}/api/students`;
 export const GETPARENTS = `${BASE}/api/parents`;
+
+//
+export const SCHOOLYEARS = `${BASE}/api/schoolyear`;
+export const SCHOOLCLASS = `${BASE}/api/schoolclass`;

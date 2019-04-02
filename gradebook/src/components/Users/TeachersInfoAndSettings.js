@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
+//import Footer from "../common/Footer";
 import { GETTEACHERS } from "../../services/api";
 import { Link } from "react-router-dom";
 
@@ -38,17 +38,19 @@ class TeachersInfoAndSettings extends Component {
       <div>
         <Header />
         <div>
-            <Link to='/admin/users'>Back to all users</Link>
+        <div className="home_options">
+            <Link to='/users'>Back to all users</Link>
+            <br></br>
             <Link>Register new teacher</Link>
           <p>Teachers:</p>
           {this.state.users.map(user => (
             <p key={user.id}>
               <span>{user.lastName}, {user.firstName}</span>
-              <button onClick={() => history.push('/admin/users/teachers/' + user.id)}>See Details</button>
+              <button onClick={() => history.push('/users/teachers/' + user.id)}>See Details</button>
             </p>
           ))}
         </div>
-        <Footer />
+        </div>
       </div>
     );
   }

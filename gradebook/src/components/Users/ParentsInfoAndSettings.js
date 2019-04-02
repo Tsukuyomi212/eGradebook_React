@@ -38,13 +38,14 @@ class ParentsInfoAndSettings extends Component {
       <div>
         <Header />
         <div>
-            <Link to='/admin/users'>Back to all users</Link>
+            <Link to='/users'>Back to all users</Link>
+            <br></br>
             <Link>Register new parent</Link>
           <p>Parents:</p>
           {this.state.users.map(user => (
             <p key={user.id}>
               <span>{user.lastName}, {user.firstName}</span>
-              <button onClick={() => history.push('/admin/users/parents/' + user.id)}>See Details</button>
+              <button onClick={() => history.push('/users/parents/' + user.id)}>See Details</button>
             </p>
           ))}
         </div>

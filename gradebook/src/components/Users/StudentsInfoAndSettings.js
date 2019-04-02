@@ -38,8 +38,9 @@ class StudentsInfoAndSettings extends Component {
       <div>
         <Header />
         <div>
-          <Link to="/admin/users">Back to all users</Link>
-          <Link to="/admin/users/students/register">Register a new student</Link>
+          <Link to="/users">Back to all users</Link>
+          <br></br>
+          <Link to="/users/students/register">Register a new studentt</Link>
           <p>Students:</p>
           {this.state.users.map(user => (
             <p key={user.id}>
@@ -47,7 +48,7 @@ class StudentsInfoAndSettings extends Component {
                 {user.lastName}, {user.firstName}
               </span>
               <button
-                onClick={() => history.push("/admin/users/students/" + user.id)}
+                onClick={() => history.push("/users/students/" + user.id)}
               >
                 See Details
               </button>

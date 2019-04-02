@@ -83,14 +83,14 @@ class StudentDetails extends Component {
           </div>
           <div className="edit_details">
             <Link
-              onClick={() => this.props.history.push('/admin/users/students/update/' + this.state.id)}
+              onClick={() => this.props.history.push('/users/students/update/' + this.state.id)}
               style={{ textDecoration: "none", color: "rgb(230, 172, 0)", fontSize:"20px" }}
             >
               Edit details
             </Link>
             <br></br>
             <Link
-              to='/admin/users/students'
+              to='/users/students'
               style={{ textDecoration: "none", color: "rgb(230, 172, 0)", fontSize:"20px" }}
             >
               Back

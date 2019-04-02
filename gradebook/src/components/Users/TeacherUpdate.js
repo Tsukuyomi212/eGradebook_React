@@ -81,7 +81,7 @@ class TeacherUpdate extends Component {
         event.preventDefault();
       };
     
-      goBack = () => this.props.history.push("/admin/users/teachers/" + this.state.id);
+      goBack = () => this.props.history.push("/users/teachers/" + this.state.id);
     
       render() {
     

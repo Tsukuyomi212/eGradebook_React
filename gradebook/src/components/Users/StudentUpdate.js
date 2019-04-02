@@ -81,7 +81,7 @@ class StudentUpdate extends Component {
         event.preventDefault();
       };
     
-      goBack = () => this.props.history.push("/admin/users/students/" + this.state.id);
+      goBack = () => this.props.history.push("/users/students/" + this.state.id);
     
       render() {
     

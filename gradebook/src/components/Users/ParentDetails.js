@@ -51,7 +51,10 @@ class ParentDetails extends Component {
     }
   }
 
+
+
   render() {
+
     return (
       <div>
         <div className="home_background">
@@ -87,7 +90,7 @@ class ParentDetails extends Component {
             <Link
               onClick={() =>
                 this.props.history.push(
-                  "/admin/users/parents/update/" + this.state.id
+                  "/users/parents/update/" + this.state.id
                 )
               }
               style={{
@@ -100,7 +103,7 @@ class ParentDetails extends Component {
             </Link>
             <br />
             <Link
-              to="/admin/users/parents"
+              to="/users/parents"
               style={{
                 textDecoration: "none",
                 color: "rgb(230, 172, 0)",
