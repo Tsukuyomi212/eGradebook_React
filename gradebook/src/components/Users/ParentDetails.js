@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import { GETPARENTS } from "../../services/api";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class ParentDetails extends Component {
   constructor(props) {

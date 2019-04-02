@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import { GETSTUDENTS } from "../../services/api";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class StudentDetails extends Component {
     constructor(props) {

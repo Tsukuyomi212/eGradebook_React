@@ -1,6 +1,7 @@
 const BASE = 'http://localhost:52940';
 
 export const LOGIN = `${BASE}/token`;
+export const REGISTER = `${BASE}/api/account/register`;
 
 //users
 export const ADMINPROFILE = `${BASE}/api/admins/`;

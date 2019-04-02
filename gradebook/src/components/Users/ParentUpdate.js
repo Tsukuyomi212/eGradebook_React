@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { GETPARENTS } from "../../services/api";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 class ParentUpdate extends Component {
     constructor(props) {

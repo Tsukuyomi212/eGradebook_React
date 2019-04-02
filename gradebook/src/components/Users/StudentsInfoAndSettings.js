@@ -4,7 +4,7 @@ import Footer from "../common/Footer";
 import { GETSTUDENTS } from "../../services/api";
 import { Link } from "react-router-dom";
 
-class TeachersInfoAndSettings extends Component {
+class StudentsInfoAndSettings extends Component {
   constructor() {
     super();
     this.state = { users: [] };
@@ -39,7 +39,7 @@ class TeachersInfoAndSettings extends Component {
         <Header />
         <div>
           <Link to="/admin/users">Back to all users</Link>
-          <Link>Register new student</Link>
+          <Link to="/admin/users/students/register">Register a new student</Link>
           <p>Students:</p>
           {this.state.users.map(user => (
             <p key={user.id}>
@@ -70,4 +70,4 @@ function checkOrder(a, b) {
   }
 }
 
-export default TeachersInfoAndSettings;
+export default StudentsInfoAndSettings;

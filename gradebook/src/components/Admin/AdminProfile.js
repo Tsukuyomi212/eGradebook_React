@@ -4,7 +4,6 @@ import Footer from "../common/Footer";
 import Header from "../common/Header";
 import { ADMINPROFILE } from "../../services/api";
 import "../common/ProfilePage.css";
-import ProfileUpdate from "./ProfileUpdate";
 
 class AdminProfile extends Component {
   constructor(props) {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { GETTEACHERS } from "../../services/api";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class TeacherUpdate extends Component {
     constructor(props) {

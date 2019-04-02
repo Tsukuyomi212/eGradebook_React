@@ -41,7 +41,7 @@ class Login extends Component {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       body: data,
-      //mode: 'no-cors'
+      mode: 'no-cors'
     };
 
     fetch(LOGIN, requestOptions)
