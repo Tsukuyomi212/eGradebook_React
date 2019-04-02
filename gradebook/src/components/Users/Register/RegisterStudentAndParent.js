@@ -12,15 +12,31 @@ class RegisterStudentAndParent extends Component {
       username: "",
       password: "",
       confirmPassword: "",
-      parent: {
-        firstName: "",
-        lastName: "",
-        email: "",
-        username: "",
-        password: "",
-        confirmPassword: ""
-      }
+      parentFirstName: "",
+      parentLastName: "",
+      parentEmail: "",
+      parentUsername: "",
+      parentPassword: "",
+      parentConfirmPassword: ""
     };
+
+    // this.state = {
+    //   firstName: "dddd",
+    //   lastName: "ddd",
+    //   email: "dddd@ddd.dd",
+    //   schoolClass: 0,
+    //   username: "ddddd",
+    //   password: "asdfasdf",
+    //   confirmPassword: "asdfasdf",
+    //   parent: {
+    //     firstName: "ccccc",
+    //     lastName: "ccccc",
+    //     email: "cccc@ccc.cc",
+    //     username: "ccccc",
+    //     password: "asdfasdf",
+    //     confirmPassword: "asdfasdf"
+    //   }
+    // };
   }
 
   componentDidMount() {
@@ -55,24 +71,23 @@ class RegisterStudentAndParent extends Component {
         Password: this.state.password,
         ConfirmPassword: this.state.confirmPassword,
         Parent: {
-          FirstName: this.state.parent.firstName,
-          LastName: this.state.parent.lastName,
-          Email: this.state.parent.email,
-          Username: this.state.parent.username,
-          Password: this.state.parent.password,
-          ConfirmPassword: this.state.parent.confirmPassword
+          FirstName: this.state.parentFirstName,
+          LastName: this.state.parentLastName,
+          Email: this.state.parentEmail,
+          Username: this.state.parentUsername,
+          Password: this.state.parentPassword,
+          ConfirmPassword: this.state.parentConfirmPassword
         }
       })
     };
 
-    const path = REGISTER + '/studentandparent';
+    const path = REGISTER + "/studentandparent";
 
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            this.setState({ errorMessage: "" });
-            this.props.history.push("/admin/students");
+            this.props.history.push("/admin/users/students");
           });
         } else {
           response
@@ -85,54 +100,136 @@ class RegisterStudentAndParent extends Component {
   };
 
   render() {
-      return (
-          <div>
-              <p>Student: </p>
-              <form>
-                  <label>First Name: </label>
-                  <input type="text" name="firstName" placeholder="Enter first name" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>LastName: </label>
-                  <input type="text" name="lastName" placeholder="Enter last name" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>Username: </label>
-                  <input type="text" name="username" placeholder="Enter username" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>E-mail: </label>
-                  <input type="text" name="email" placeholder="Enter e-mail" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>Password: </label>
-                  <input type="password" name="password" placeholder="Enter password" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>Confirm Password: </label>
-                  <input type="password" name="confirmPassword" placeholder="Confirm password" onChange={this.handleInputChange}></input>
-                  <br />
-              </form>
-              <br />
-              <p>Parent: </p>
-              <form>
-                  <label>First Name: </label>
-                  <input type="text" name="parent.firstName" placeholder="Enter first name" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>LastName: </label>
-                  <input type="text" name="parent.lastName" placeholder="Enter last name" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>Username: </label>
-                  <input type="text" name="parent.username" placeholder="Enter username" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>E-mail: </label>
-                  <input type="text" name="parent.email" placeholder="Enter e-mail" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>Password: </label>
-                  <input type="password" name="parent.password" placeholder="Enter password" onChange={this.handleInputChange}></input>
-                  <br />
-                  <label>Confirm Password: </label>
-                  <input type="password" name="parent.confirmPassword" placeholder="Confirm password" onChange={this.handleInputChange}></input>
-              </form>
-              <input type="submit" value="Create" className="submit" onClick={this.handleSubmit}/>
-                <input type="button" value="Cancel" className="cancel" onClick={()=>this.props.history.push("/admin/students")} />
-          </div>
-      )
+    return (
+      <div>
+        <p>Student: </p>
+        <form>
+          <label>First Name: </label>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Enter first name"
+            onChange={this.handleInputChange}
+            value={this.state.firstName}
+          />
+          <br />
+          <label>LastName: </label>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Enter last name"
+            onChange={this.handleInputChange}
+            value={this.state.lastName}
+          />
+          <br />
+          <label>Username: </label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Enter username"
+            onChange={this.handleInputChange}
+            value={this.state.username}
+          />
+          <br />
+          <label>E-mail: </label>
+          <input
+            type="text"
+            name="email"
+            placeholder="Enter e-mail"
+            onChange={this.handleInputChange}
+            value={this.state.email}
+          />
+          <br />
+          <label>Password: </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter password"
+            onChange={this.handleInputChange}
+            value={this.state.password}
+          />
+          <br />
+          <label>Confirm Password: </label>
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            onChange={this.handleInputChange}
+            value={this.state.confirmPassword}
+          />
+          <br />
+        </form>
+        <br />
+        <p>Parent: </p>
+        <form>
+          <label>First Name: </label>
+          <input
+            type="text"
+            name="parentFirstName"
+            placeholder="Enter first name"
+            onChange={this.handleInputChange}
+            value={this.state.parentFirstName}
+          />
+          <br />
+          <label>LastName: </label>
+          <input
+            type="text"
+            name="parentLastName"
+            placeholder="Enter last name"
+            onChange={this.handleInputChange}
+            value={this.state.parentLastName}
+          />
+          <br />
+          <label>Username: </label>
+          <input
+            type="text"
+            name="parentUsername"
+            placeholder="Enter username"
+            onChange={this.handleInputChange}
+            value={this.state.parentUsername}
+          />
+          <br />
+          <label>E-mail: </label>
+          <input
+            type="text"
+            name="parentEmail"
+            placeholder="Enter e-mail"
+            onChange={this.handleInputChange}
+            value={this.state.parentEmail}
+          />
+          <br />
+          <label>Password: </label>
+          <input
+            type="password"
+            name="parentPassword"
+            placeholder="Enter password"
+            onChange={this.handleInputChange}
+            value={this.state.parentPassword}
+          />
+          <br />
+          <label>Confirm Password: </label>
+          <input
+            type="password"
+            name="parentConfirmPassword"
+            placeholder="Confirm password"
+            onChange={this.handleInputChange}
+            value={this.state.parentConfirmPassword}
+          />
+        </form>
+        <input
+          type="submit"
+          value="Create"
+          className="submit"
+          onClick={this.handleSubmit}
+        />
+        <input
+          type="button"
+          value="Cancel"
+          className="cancel"
+          onClick={() => this.props.history.push("/admin/students")}
+        />
+      </div>
+    );
   }
 }
 
