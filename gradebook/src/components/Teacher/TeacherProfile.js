@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { TEACHER } from "../../services/api";
+import TeacherCourses from './TeacherCourses';
 
 class TeacherProfile extends Component {
   constructor(props) {
@@ -9,8 +10,7 @@ class TeacherProfile extends Component {
       lastName: "",
       username: "",
       email: "",
-      id: localStorage.getItem("id"),
-      courses: []
+      id: localStorage.getItem("id")
     };
   }
 
@@ -35,8 +35,7 @@ class TeacherProfile extends Component {
                 firstName: data.firstName,
                 lastName: data.lastName,
                 username: data.userName,
-                email: data.email,
-                courses: data.teacherTeachesCourses
+                email: data.email
               })
             );
           } else {
@@ -62,12 +61,7 @@ class TeacherProfile extends Component {
         <p>
           <span>E-mail:</span> {this.state.email}
         </p>
-        <p>Courses:</p>
-        <ul>
-          {this.state.courses.map(course => (
-            <li key={course.id}>{course.courseName}</li>
-          ))}
-        </ul>
+        <TeacherCourses />
       </div>
     );
   }
