@@ -62,6 +62,7 @@ class App extends Component {
               <Route exact path='/courses/create' component={CreateCourse}></Route>
 
               <Route exact path='/teacher/home' component={TeacherHome}></Route>
+              {/* <Route exact path='/teacher/schoolclass' component={TeacherSchoolClass}></Route> */}
             </Switch>
           </Fragment>
         </BrowserRouter>

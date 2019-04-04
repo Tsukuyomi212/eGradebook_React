@@ -25,7 +25,7 @@ class TeacherProfile extends Component {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
       };
-      const profileURL = TEACHER + this.state.id;
+      const profileURL = TEACHER + 'profile/' + this.state.id;
 
       fetch(profileURL, requestOptions)
         .then(response => {
