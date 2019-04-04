@@ -22,6 +22,7 @@ import CreateSchoolClass from './components/SchoolClass/CreateSchoolClass';
 import SchoolClassDetails from './components/SchoolClass/SchoolClassDetails';
 import Courses from './components/Courses/Courses';
 import CreateCourse from './components/Courses/CreateCourse';
+import TeacherHome from './components/Teacher/TeacherHome';
 
 class App extends Component {
   render() {
@@ -59,6 +60,8 @@ class App extends Component {
 
               <Route exact path='/courses' component={Courses}></Route>
               <Route exact path='/courses/create' component={CreateCourse}></Route>
+
+              <Route exact path='/teacher/home' component={TeacherHome}></Route>
             </Switch>
           </Fragment>
         </BrowserRouter>

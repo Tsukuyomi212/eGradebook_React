@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ADMINPROFILE } from "../../services/api";
+import { ADMINS } from "../../services/api";
 import Header from "../common/Header";
 import '../common/ProfileUpdate.css';
 
@@ -23,7 +23,7 @@ class ProfileUpdate extends Component {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
       };
-      const profileURL = ADMINPROFILE + this.state.id;
+      const profileURL = ADMINS + this.state.id;
 
       fetch(profileURL, requestOptions)
         .then(response => {
@@ -65,7 +65,7 @@ class ProfileUpdate extends Component {
       })
     };
     console.log('requestOptions:', requestOptions);
-    const path = ADMINPROFILE + this.state.id;
+    const path = ADMINS + this.state.id;
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {

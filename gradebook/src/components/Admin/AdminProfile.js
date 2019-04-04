@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 //import Footer from "../common/Footer";
 import Header from "../common/Header";
-import { ADMINPROFILE } from "../../services/api";
+import { ADMINS } from "../../services/api";
 import "../common/ProfilePage.css";
 
 class AdminProfile extends Component {
@@ -29,7 +29,7 @@ class AdminProfile extends Component {
           Authorization: "Bearer " + localStorage.getItem("token")
         }
       };
-      const profileURL = ADMINPROFILE + this.state.id;
+      const profileURL = ADMINS + this.state.id;
       console.log('profileURL:', profileURL);
 
       fetch(profileURL, requestOptions)
