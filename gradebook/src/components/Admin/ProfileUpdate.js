@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ADMINPROFILE } from "../../services/api";
 import Header from "../common/Header";
+import '../common/ProfileUpdate.css';
 
 class ProfileUpdate extends Component {
   constructor(props) {
@@ -86,12 +87,12 @@ class ProfileUpdate extends Component {
   render() {
 
     return (
-      <div>
+      <div className="home_background">
         <Header />
         <div className="profile_data">
         <form onSubmit={this.handleSubmit}>
           <p>
-            <span className="data_font">First name:</span>
+            <span className="data_font">First name: </span>
             <input
               placeholder={this.state.firstName}
               name="firstName"
@@ -100,7 +101,7 @@ class ProfileUpdate extends Component {
             />
           </p>
           <p>
-            <span className="data_font">Last name:</span>
+            <span className="data_font">Last name: </span>
             <input
               placeholder={this.state.lastName}
               name="lastName"
@@ -109,7 +110,7 @@ class ProfileUpdate extends Component {
             />
           </p>
           <p>
-            <span className="data_font">Username:</span>
+            <span className="data_font">Username: </span>
             <input
               placeholder={this.state.username}
               name="userName"
@@ -118,19 +119,20 @@ class ProfileUpdate extends Component {
             />
           </p>
           <p>
-            <span className="data_font">E-mail:</span>
+            <span className="data_font">E-mail: </span>
             <input
+
               placeholder={this.state.email}
               name="email"
               type="text"
               onChange={this.handleInputChange}
             />
           </p>
-          <button onClick= {(event) => {this.handleSubmit(event); this.goBack(event)}}>
+          <button id="button_save_update" onClick= {(event) => {this.handleSubmit(event); this.goBack(event)}}>
             Save changes
           </button>
-
           <button
+            id="button_cancel_update"
             type="button"
             value="Cancel"
             onClick={this.goBack}

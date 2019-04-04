@@ -9,21 +9,19 @@ class Header extends Component {
         this.props.history.push("/");
     }
 
-   
-       
-
-    
-
     render() {
-
+        const linkStyle = {
+            textDecoration: 'none',
+            color: 'black'
+        }
 
         return (
             <div className="header">
                 <ul className="navbar">
                     
-                    <li className="blue_text" id="loggedin">Logged in as: {localStorage.getItem("firstName")} {localStorage.getItem("lastName")}</li>
-                    <li><Link onClick={this.logout} style={{textDecoration: 'none', color: 'rgb(19, 38, 58)'}}>Log out</Link></li>
-                    <li><Link to='/admin/home'>Home</Link></li>
+                    <li  id="loggedin">Logged in as: {localStorage.getItem("firstName")} {localStorage.getItem("lastName")}</li>
+                    <li><Link to='/admin/home' style={linkStyle}>Home</Link></li>
+                    <li><Link onClick={this.logout} style={linkStyle}>Log out</Link></li>
                 </ul>
             </div>
         )

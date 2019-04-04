@@ -87,7 +87,7 @@ class RegisterStudentAndParent extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            this.props.history.push("/admin/users/students");
+            this.props.history.push("/users/students");
           });
         } else {
           response
@@ -226,7 +226,7 @@ class RegisterStudentAndParent extends Component {
           type="button"
           value="Cancel"
           className="cancel"
-          onClick={() => this.props.history.push("/admin/students")}
+          onClick={() => this.props.history.push("/users/students")}
         />
       </div>
     );

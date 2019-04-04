@@ -16,9 +16,12 @@ import ParentsInfoAndSettings from './components/Users/ParentsInfoAndSettings';
 import ParentDetails from './components/Users/ParentDetails';
 import ParentUpdate from './components/Users/ParentUpdate';
 import RegisterStudentAndParent from './components/Users/Register/RegisterStudentAndParent';
-import SchoolGradeOptions from './components/SchoolGrades/SchoolGradeOptions';
 import SchoolYears from './components/SchoolYear/SchoolYears';
-import SchoolClasses from './components/SchoolGrades/SchoolClasses';
+import SchoolClasses from './components/SchoolClass/SchoolClasses';
+import CreateSchoolClass from './components/SchoolClass/CreateSchoolClass';
+import SchoolClassDetails from './components/SchoolClass/SchoolClassDetails';
+import Courses from './components/Courses/Courses';
+import CreateCourse from './components/Courses/CreateCourse';
 
 class App extends Component {
   render() {
@@ -36,8 +39,8 @@ class App extends Component {
               <Route exact path='/users' component={UserOptions}></Route>
 
               <Route exact path='/users/teachers' component={TeachersInfoAndSettings}></Route>
-              <Route path='/users/teachers/update/:id' component={TeacherUpdate}></Route>
-              <Route path='/users/teachers/:id' component={TeacherDetails}></Route>
+              <Route exact path='/users/teachers/update/:id' component={TeacherUpdate}></Route>
+              <Route exact path='/users/teachers/:id' component={TeacherDetails}></Route>
 
               <Route exact path='/users/students' component={StudentsInfoAndSettings}></Route>
               <Route path='/users/students/register' component={RegisterStudentAndParent}></Route>
@@ -48,9 +51,14 @@ class App extends Component {
               <Route path='/users/parents/update/:id' component={ParentUpdate}></Route>
               <Route path='/users/parents/:id' component={ParentDetails}></Route>
 
-              <Route exact path='/admin/schoolgrades' component={SchoolGradeOptions}></Route>
               <Route path='/schoolyears' component={SchoolYears}></Route>
-              <Route path='/schoolclasses' component={SchoolClasses}></Route>
+
+              <Route exact path='/schoolclasses' component={SchoolClasses}></Route>
+              <Route exact path='/schoolclasses/create' component={CreateSchoolClass}></Route>
+              <Route exact path='/schoolclasses/:id' component={SchoolClassDetails}></Route>
+
+              <Route exact path='/courses' component={Courses}></Route>
+              <Route exact path='/courses/create' component={CreateCourse}></Route>
             </Switch>
           </Fragment>
         </BrowserRouter>

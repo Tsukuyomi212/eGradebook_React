@@ -24,7 +24,8 @@ class SchoolClasses extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            this.setState({ schoolClasses: data });
+            const realClassses = data.filter(schoolClass => schoolClass.grade !== 0 && schoolClass.section !==0);
+            this.setState({ schoolClasses: realClassses });
           });
         } else {
           response.text().then(message => alert(message));
@@ -38,18 +39,19 @@ class SchoolClasses extends Component {
       <div>
         <Header />
         <div>
-            <Link>Create new School Class</Link>
+            <Link to="/schoolclasses/create">Create new School Class</Link>
           <h2>School Classes</h2>
           {this.state.schoolClasses.map(schoolClass => (
             <p key={schoolClass.id}>
               {schoolClass.grade} / {schoolClass.section} (
               {schoolClass.schoolYear})
               <span>
-                  <button>See details</button>
+                  <button onClick={() => this.props.history.push("/schoolclasses/" + schoolClass.id)}>See details</button>
               </span>
             </p>
           ))}
         </div>
+        <button onClick={() => this.props.history.push('/admin/home')}>Back</button>
         <Footer />
       </div>
     );

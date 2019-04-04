@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
+//import Footer from "../common/Footer";
 import { GETSTUDENTS } from "../../services/api";
 import { Link } from "react-router-dom";
+import './UsersList.css';
 
 class StudentsInfoAndSettings extends Component {
   constructor() {
@@ -34,28 +35,35 @@ class StudentsInfoAndSettings extends Component {
 
   render() {
     const { history } = this.props;
+    const linkStyle = {
+      textDecoration: 'none',
+      color: 'rgb(230, 172, 0)'
+    }
     return (
       <div>
         <Header />
         <div>
-          <Link to="/users">Back to all users</Link>
+        <h4>Students</h4>
+          <Link style={linkStyle} to="/users">Back to all users</Link>
           <br></br>
-          <Link to="/users/students/register">Register a new studentt</Link>
-          <p>Students:</p>
+          <Link style={linkStyle} to="/users/students/register">Register a new student</Link>
+
+          <div className="users_list">
           {this.state.users.map(user => (
             <p key={user.id}>
               <span>
                 {user.lastName}, {user.firstName}
               </span>
               <button
-                onClick={() => history.push("/users/students/" + user.id)}
+               id="details_button"
+                onClick={() => history.push("/users/students/" + user.id)} 
               >
                 See Details
               </button>
             </p>
           ))}
+          </div>
         </div>
-        <Footer />
       </div>
     );
   }
