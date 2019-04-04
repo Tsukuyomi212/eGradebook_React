@@ -1,21 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Header from '../common/Header';
 import TeacherProfile from './TeacherProfile';
 import TeacherClasses from './TeacherClasses';
 
+// import TeacherSchoolClass from './TeacherSchoolClass';
+
 class TeacherHome extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: '',
-      id: localStorage.getItem("id"),
-      courses: []
-    }
-  }
 
   render() {
     return (
@@ -23,7 +14,8 @@ class TeacherHome extends Component {
         <Header />
         <div>
           <TeacherProfile />
-          <TeacherClasses />
+          <TeacherClasses history={this.props.history} />
+         {/* <TeacherSchoolClass /> */}
         </div>
       </div>
     )

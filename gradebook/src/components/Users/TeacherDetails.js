@@ -80,7 +80,7 @@ class TeacherDetails extends Component {
           </div>
           <div className="edit_details">
             <Link
-              onClick={() => this.props.history.push('/users/teachers/update/' + this.state.id)}
+              to={'/users/teachers/update/' + this.state.id}
               style={{ textDecoration: "none", color: "rgb(230, 172, 0)", fontSize:"20px" }}
             >
               Edit details

@@ -19,13 +19,12 @@ class TeacherClasses extends Component {
       }
     };
 
-    const path = TEACHER + this.state.id + '/schoolclasses';
+    const path = TEACHER + this.state.id + "/schoolclasses";
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            const realClassses = data.filter(schoolClass => schoolClass.grade !== 0 && schoolClass.section !==0);
-            this.setState({ schoolClasses: realClassses });
+            this.setState({ schoolClasses: data });
           });
         } else {
           response.text().then(message => alert(message));
@@ -34,8 +33,8 @@ class TeacherClasses extends Component {
       .catch(error => console.log(error));
   }
 
-
   render() {
+    const { id } = this.state;
     return (
       <div>
         <h2>School Classes</h2>
@@ -43,15 +42,15 @@ class TeacherClasses extends Component {
           <p key={schoolClass.id}>
             {schoolClass.grade} / {schoolClass.section} (
             {schoolClass.schoolYear})
-            <span>
-              <button
-                onClick={() =>
-                  this.props.history.push('/teacher/schoolclass')
-                }
-              >
-                Select
-              </button>
-            </span>
+            <button
+              onClick={() =>
+                this.props.history.push(
+                  `/teacher/${id}/schoolclass/${schoolClass.id}`
+                )
+              }
+            >
+              Select
+            </button>
           </p>
         ))}
       </div>

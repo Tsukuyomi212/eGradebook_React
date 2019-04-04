@@ -134,11 +134,11 @@ class SchoolClassDetails extends Component {
             value={this.state.schoolYearId}
             onChange={this.handleSchoolYearChange}
           >
-            {this.state.schoolYearName === "SchoolYear to be added" && (
+            {/* {this.state.schoolYearName === "SchoolYear to be added" && (
               <option key={-1} value={-1}>
                 TBA
               </option>
-            )}
+            )} */}
 
             {this.state.schoolYears.map(schoolYear => {
               return (
