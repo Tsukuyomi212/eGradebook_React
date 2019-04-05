@@ -64,7 +64,7 @@ class StudentCourses extends Component {
                 <td>{course.courseName}</td>
                 <td>
                   {course.marks.map(mark => (
-                    <span key={mark.id}> {mark.value}, </span>
+                    <span key={mark.id}> {mark.value} </span>
                   ))}
                 </td>
               </tr>

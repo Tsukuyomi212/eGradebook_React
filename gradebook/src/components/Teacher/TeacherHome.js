@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Header from '../common/Header';
 import TeacherProfile from './TeacherProfile';
 import TeacherClasses from './TeacherClasses';
+import TeacherCourses from './TeacherCourses';
 
 // import TeacherSchoolClass from './TeacherSchoolClass';
 
@@ -14,12 +15,13 @@ class TeacherHome extends Component {
         <Header />
         <div>
           <TeacherProfile />
-          <TeacherClasses history={this.props.history} />
+          <TeacherCourses history={this.props.history} />
+          {/* <TeacherClasses history={this.props.history} /> */}
          {/* <TeacherSchoolClass /> */}
         </div>
       </div>
     )
   }
 }
-
+//
 export default TeacherHome;

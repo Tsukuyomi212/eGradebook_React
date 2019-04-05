@@ -49,7 +49,7 @@ class TeacherClasses extends Component {
                 )
               }
             >
-              Select
+              See
             </button>
           </p>
         ))}

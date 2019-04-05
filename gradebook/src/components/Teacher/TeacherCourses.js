@@ -6,8 +6,8 @@ class TeacherCourses extends Component {
     super(props);
     this.state = {
       courses: [],
-      id: localStorage.getItem("id")
-    }
+      teacherId: localStorage.getItem("id")
+    };
   }
 
   componentDidMount() {
@@ -19,7 +19,8 @@ class TeacherCourses extends Component {
       }
     };
 
-    const path = TEACHER + this.state.id + '/courses';
+    const { teacherId } = this.state;
+    const path = TEACHER + teacherId + "/courses";
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
@@ -37,18 +38,39 @@ class TeacherCourses extends Component {
   render() {
     return (
       <div>
-        <h4>Courses: </h4>
+        <p>
+          Teaches courses:{" "}
+          {this.state.courses.map(course => (
+            <span key={course.id}>{course.subject.name} </span>
+          ))}
+        </p>
         <ul>
           {this.state.courses.map(course => (
             <li key={course.id}>
               {course.subject.name} / {course.subject.grade}. grade / Classes
               weekly: {course.subject.classesPerWeek}
+              <ul>
+                {course.schoolClasses.map(schoolClass => (
+                  <li key={schoolClass.id}>
+                    {schoolClass.grade} / {schoolClass.section}{" "}
+                    <button
+                      onClick={() =>
+                        this.props.history.push(
+                          `/teacher/${this.state.teacherId}/course/${course.id}/schoolclass/${schoolClass.id}`
+                        )
+                      }
+                    >
+                      See
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
-          </ul>
+        </ul>
       </div>
-    )
+    );
   }
 }
-
+//
 export default TeacherCourses;

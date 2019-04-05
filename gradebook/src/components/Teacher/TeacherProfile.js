@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { TEACHER } from "../../services/api";
-import TeacherCourses from './TeacherCourses';
 
 class TeacherProfile extends Component {
   constructor(props) {
@@ -61,7 +60,6 @@ class TeacherProfile extends Component {
         <p>
           <span>E-mail:</span> {this.state.email}
         </p>
-        <TeacherCourses />
       </div>
     );
   }

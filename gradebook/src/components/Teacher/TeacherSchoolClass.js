@@ -20,8 +20,10 @@ class TeacherSchoolClass extends Component {
         Authorization: "Bearer  " + localStorage.getItem("token")
       }
     };
-    const { teacherId, schoolClassId } = this.props.match.params;
-    const path = TEACHER + teacherId + "/schoolclasses/" + schoolClassId;
+
+    const { teacherId, schoolClassId, courseId } = this.props.match.params;
+    const path =
+      TEACHER + teacherId + "/course/" + courseId + "/class/" + schoolClassId;
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
@@ -40,16 +42,28 @@ class TeacherSchoolClass extends Component {
       .catch(error => console.log(error));
   }
 
+  
+
   render() {
+    const { teacherId, schoolClassId, courseId } = this.props.match.params;
     return (
       <div>
         <h4>
-          {this.state.grade} / {this.state.section} ({this.state.schoolYearName})
+          {this.state.grade} / {this.state.section} ({this.state.schoolYearName}
+          )
         </h4>
-        {/* <h5>Subject: </h5> */}
         <ol>
           {this.state.students.map(student => (
-            <li key={student.id}>{student.lastName}, {student.firstName}</li>
+            <li key={student.id}>
+              {student.lastName}, {student.firstName}
+              <button
+                onClick={() =>
+                  this.props.history.push(`/teacher/${teacherId}/student/${student.id}/course/${courseId}`)
+                }
+              >
+                See details
+              </button>
+            </li>
           ))}
         </ol>
       </div>

@@ -64,7 +64,7 @@ class App extends Component {
               <Route exact path='/courses/create' component={CreateCourse}></Route>
 
               <Route exact path='/teacher/home' component={TeacherHome}></Route>
-              <Route exact path='/teacher/:teacherId/schoolclass/:schoolClassId' component={TeacherSchoolClass}></Route>
+              <Route exact path='/teacher/:teacherId/course/:courseId/schoolclass/:schoolClassId' component={TeacherSchoolClass}></Route>
 
               <Route exact path='/student/home' component={StudentHome}></Route>
             </Switch>
