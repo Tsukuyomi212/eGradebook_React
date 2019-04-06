@@ -48,6 +48,7 @@ class TeacherSchoolClass extends Component {
     const { teacherId, courseId } = this.props.match.params;
     return (
       <div>
+        <button onClick={() => this.props.history.push('/teacher/home')}>Back</button>
         <h4>
           {this.state.grade} / {this.state.section} ({this.state.schoolYearName}
           )

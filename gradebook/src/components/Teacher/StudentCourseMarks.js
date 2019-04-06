@@ -53,6 +53,7 @@ class StudentCourseMarks extends Component {
                 courseName: data.course.subject.name,
                 marks: data.marks,
                 studentId: data.student.id,
+                schoolClassId: data.student.schoolClass.id,
                 addMarkVisible: false
               })
             );
@@ -112,8 +113,10 @@ class StudentCourseMarks extends Component {
   render() {
     const categories = ["Semester", "Mark", "Date added"];
     const { courseId } = this.props.match.params;
+    const {teacherId, schoolClassId} = this.state;
     return (
       <div>
+        <button onClick={() => this.props.history.push(`/teacher/${teacherId}/course/${courseId}/schoolclass/${schoolClassId}`)}>Back</button>
         <h5>
           {this.state.schoolClassGrade} / {this.state.schoolClassSection} (
           {this.state.schoolYear})
