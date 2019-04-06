@@ -63,7 +63,7 @@ class StudentUpdate extends Component {
             email: this.state.userData.email
           })
         };
-        console.log('requestOptions:', requestOptions);
+
         const path = GETSTUDENTS + '/' + this.state.id;
         fetch(path, requestOptions)
           .then(response => {

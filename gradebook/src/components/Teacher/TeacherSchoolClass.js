@@ -45,7 +45,7 @@ class TeacherSchoolClass extends Component {
   
 
   render() {
-    const { teacherId, schoolClassId, courseId } = this.props.match.params;
+    const { teacherId, courseId } = this.props.match.params;
     return (
       <div>
         <h4>
