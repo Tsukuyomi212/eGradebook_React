@@ -87,6 +87,28 @@ class StudentCourseMarks extends Component {
     this.setState({ marks });
   };
 
+  deleteMark = id => {
+    const path = TEACHER + this.state.teacherId + "/mark/" + id;
+    const requestOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer  " + localStorage.getItem("token")
+      }
+    };
+    fetch(path, requestOptions)
+      .then(response => {
+        if (response.ok) {
+          this.setState({
+            marks: this.state.marks.filter(mark => mark.id !== id)
+          });
+        } else {
+          response.text().then(message => alert(message));
+        }
+      })
+      .catch(error => console.log(error));
+  };
+
   render() {
     const categories = ["Semester", "Mark", "Date added"];
     const { courseId } = this.props.match.params;
@@ -141,7 +163,9 @@ class StudentCourseMarks extends Component {
                     )}
                   </td>
                   <td>
-                    <button>Delete</button>
+                    <button onClick={() => this.deleteMark(mark.id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
