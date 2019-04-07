@@ -67,8 +67,8 @@ class LogData extends Component {
       </div>
       <div>
         <button onClick={this.showLog}>Show Log</button>
-        {this.state.dayLog.map((entry, index) => (
-          <p key={entry[index]}>{entry}</p>
+        {this.state.dayLog.map((entry) => (
+          <p key={entry.id}>{entry}</p>
         ))}
       </div>
       </div>

@@ -59,15 +59,17 @@ class CreateCourse extends Component {
         <h3>Create a new course</h3>
         <div>
           <form>
-            <label>Select a subject: </label>
+            <label>Subject: </label>
             <select>
+              <option>Select a subject</option>
              {this.state.subjects.map(subject => (
                <option key={subject.id}>{subject.name} / {subject.grade}. grade</option>
              ))}
             </select>
-            <p>Or create a new subject: <button>Create subject</button></p>
-            <label>Select a teacher: </label>
+            <p>Or create a new subject: <button onClick={() => this.props.history.push('/subjects/create')}>Create subject</button></p>
+            <label>Teacher: </label>
             <select>
+              <option>Select a teacher</option>
             {this.state.teachers.map(teacher => (
                <option key={teacher.id}>{teacher.firstName} {teacher.lastName}</option>
              ))}

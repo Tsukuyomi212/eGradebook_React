@@ -30,6 +30,7 @@ import ParentHome from './components/Parent/ParentHome';
 import ChildCourses from './components/Parent/ChildCourses';
 import RegisterTeacher from './components/Users/Register/RegisterTeacher';
 import LogData from './components/Admin/LogData';
+import CreateSubject from './components/Courses/CreateSubject';
 //import AddMark from './components/Teacher/AddMark';
 
 class App extends Component {
@@ -69,6 +70,7 @@ class App extends Component {
 
               <Route exact path='/courses' component={Courses}></Route>
               <Route exact path='/courses/create' component={CreateCourse}></Route>
+              <Route exact path='/subjects/create' component={CreateSubject}></Route>
 
               <Route exact path='/teacher/home' component={TeacherHome}></Route>
               <Route exact path='/teacher/:teacherId/course/:courseId/schoolclass/:schoolClassId' component={TeacherSchoolClass}></Route>
