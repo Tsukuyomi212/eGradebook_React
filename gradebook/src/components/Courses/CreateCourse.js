@@ -74,7 +74,7 @@ class CreateCourse extends Component {
                <option key={teacher.id}>{teacher.firstName} {teacher.lastName}</option>
              ))}
             </select>
-            <p>Or register a new teacher: <button>Register teacher</button></p>
+            <p>Or register a new teacher: <button onClick={() => this.props.history.push('/users/teachers/register')}>Register teacher</button></p>
           </form>
         </div>
         <button>Submit</button>

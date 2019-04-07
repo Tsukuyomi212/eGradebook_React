@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { COURSES } from "../../services/api";
+import { Link } from 'react-router-dom';
 
 class Courses extends Component {
   constructor() {
@@ -43,6 +44,7 @@ class Courses extends Component {
             </p>
           ))}
         </div>
+        <Link to='/subjects'>See all subjects</Link>
         <button onClick={() => this.props.history.push("/admin/home")}>
           Back
         </button>

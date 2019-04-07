@@ -1,20 +1,40 @@
-import React, {Component} from 'react';
-import {SUBJECTS} from '../../services/api';
+import React, { Component } from "react";
+import { SUBJECTS } from "../../services/api";
 
-class CreateSubject extends Component {
+class UpdateSubject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      grade: undefined,
-      classesPerWeek: undefined
-    }
+      subjectData: null
+    };
   }
 
   componentDidMount() {
-    const currentUser = localStorage.getItem("token");
-    if (!currentUser) {
+    if (localStorage.getItem("token") === null) {
       this.props.history.push("/");
+    } else {
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token")
+        }
+      };
+      const url = SUBJECTS + '/' + this.props.match.params.subjectId;
+
+      fetch(url, requestOptions)
+        .then(response => {
+          if (response.ok) {
+            response.json().then(data =>
+              this.setState({
+                subjectData: data
+              })
+            );
+          } else {
+            response.text().then(message => alert("Something is not right"));
+          }
+        })
+        .catch(error => console.log(error));
     }
   }
 
@@ -23,29 +43,32 @@ class CreateSubject extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: target.value
+      subjectData: { ...this.state.subjectData, [name]: target.value }
     });
   };
 
   handleSubmit = event => {
+    const { markValue } = this.state;
     const requestOptions = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer  " + localStorage.getItem("token")
       },
       body: JSON.stringify({
-        Name: this.state.name,
-        Grade: this.state.grade,
-        ClassesPerWeek: this.state.classesPerWeek
+        Name: this.state.subjectData.name,
+        Grade: this.state.subjectData.grade,
+        ClassesPerWeek: this.state.subjectData.classesPerWeek
       })
     };
 
-    fetch(SUBJECTS, requestOptions)
+    const URL = SUBJECTS + '/' + this.props.match.params.subjectId;
+    fetch(URL, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            alert('Subject successfully created!')
+            alert("Subject successfully updated!")
+            this.setState({ errorMessage: ""});
           });
         } else {
           response
@@ -56,7 +79,6 @@ class CreateSubject extends Component {
       .catch(error => console.log(error));
     event.preventDefault();
   };
-
 
   render() {
     return (
@@ -116,4 +138,4 @@ class CreateSubject extends Component {
   }
 }
 
-export default CreateSubject;
+export default UpdateSubject;
