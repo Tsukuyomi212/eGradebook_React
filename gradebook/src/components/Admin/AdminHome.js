@@ -15,7 +15,7 @@ class AdminHome extends Component {
             <p><Link to='/users' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Users</Link></p>
             <p><Link to='/courses' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Courses</Link></p>
             <p><Link to='/schoolclasses' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>School Classes</Link></p>
-            <p><Link to='/loggingdata' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Logging Data</Link></p>
+            <p><Link to='/logs' style={{textDecoration: 'none', color: 'rgb(230, 172, 0)'}}>Logging Data</Link></p>
             </div>
         </div>
       </div>

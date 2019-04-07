@@ -40,7 +40,7 @@ class ParentsInfoAndSettings extends Component {
         <div>
             <Link to='/users'>Back to all users</Link>
             <br></br>
-            <Link>Register new parent</Link>
+            {/* <Link>Register new parent</Link> */}
           <p>Parents:</p>
           {this.state.users.map(user => (
             <p key={user.id}>

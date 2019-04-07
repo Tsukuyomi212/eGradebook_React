@@ -1,4 +1,4 @@
-const BASE = "http://localhost:52940";
+export const BASE = "http://localhost:52940";
 
 export const LOGIN = `${BASE}/token`;
 export const REGISTER = `${BASE}/api/account/register`;

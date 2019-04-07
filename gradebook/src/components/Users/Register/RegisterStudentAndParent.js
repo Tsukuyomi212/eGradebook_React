@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { REGISTER } from "../../../services/api";
+import { GETPARENTS } from "../../../services/api";
 //
 class RegisterStudentAndParent extends Component {
   constructor(props) {
@@ -17,26 +18,10 @@ class RegisterStudentAndParent extends Component {
       parentEmail: "",
       parentUsername: "",
       parentPassword: "",
-      parentConfirmPassword: ""
+      parentConfirmPassword: "",
+      parents: []
     };
 
-    // this.state = {
-    //   firstName: "dddd",
-    //   lastName: "ddd",
-    //   email: "dddd@ddd.dd",
-    //   schoolClass: 0,
-    //   username: "ddddd",
-    //   password: "asdfasdf",
-    //   confirmPassword: "asdfasdf",
-    //   parent: {
-    //     firstName: "ccccc",
-    //     lastName: "ccccc",
-    //     email: "cccc@ccc.cc",
-    //     username: "ccccc",
-    //     password: "asdfasdf",
-    //     confirmPassword: "asdfasdf"
-    //   }
-    // };
   }
 
   componentDidMount() {
@@ -44,6 +29,26 @@ class RegisterStudentAndParent extends Component {
     if (!currentUser) {
       this.props.history.push("/");
     }
+
+    //for parent select
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer  " + localStorage.getItem("token")
+      }
+    };
+    fetch(GETPARENTS, requestOptions)
+      .then(response => {
+        if (response.ok) {
+          response.json().then(data => {
+            data.sort(checkOrder);
+            this.setState({ parents: data })});
+        } else {
+          response.text().then(message => alert(message));
+        }
+      })
+      .catch(error => console.log(error));
   }
 
   handleInputChange = event => {
@@ -160,6 +165,17 @@ class RegisterStudentAndParent extends Component {
           <br />
         </form>
         <br />
+        <p>Add parent: </p>
+        <div>
+        <select>
+          <option>Select parent</option>
+          {this.state.parents.map(parent => (
+            <option key={parent.id}>{parent.lastName}, {parent.firstName}</option>
+          ))}
+        </select>
+      </div>
+        <p>Or register new:</p>
+        <br />
         <p>Parent: </p>
         <form>
           <label>First Name: </label>
@@ -230,6 +246,16 @@ class RegisterStudentAndParent extends Component {
         />
       </div>
     );
+  }
+}
+
+function checkOrder(a, b) {
+  if (a.lastName > b.lastName) {
+    return 1;
+  } else if (a.lastName === b.lastName) {
+    return a.firstName > b.firstName ? 1 : -1;
+  } else {
+    return -1;
   }
 }
 
