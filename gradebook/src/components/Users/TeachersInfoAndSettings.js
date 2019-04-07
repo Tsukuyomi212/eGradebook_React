@@ -41,7 +41,7 @@ class TeachersInfoAndSettings extends Component {
         <div className="home_options">
             <Link to='/users'>Back to all users</Link>
             <br></br>
-            <Link>Register new teacher</Link>
+            <Link to='/users/teachers/register'>Register new teacher</Link>
           <p>Teachers:</p>
           {this.state.users.map(user => (
             <p key={user.id}>

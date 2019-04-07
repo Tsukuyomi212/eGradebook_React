@@ -28,6 +28,7 @@ import StudentHome from './components/Student/StudentHome';
 import StudentCourseMarks from './components/Teacher/StudentCourseMarks';
 import ParentHome from './components/Parent/ParentHome';
 import ChildCourses from './components/Parent/ChildCourses';
+import RegisterTeacher from './components/Users/Register/RegisterTeacher';
 //import AddMark from './components/Teacher/AddMark';
 
 class App extends Component {
@@ -46,6 +47,7 @@ class App extends Component {
               <Route exact path='/users' component={UserOptions}></Route>
 
               <Route exact path='/users/teachers' component={TeachersInfoAndSettings}></Route>
+              <Route exact path='/users/teachers/register' component={RegisterTeacher}></Route>
               <Route exact path='/users/teachers/update/:id' component={TeacherUpdate}></Route>
               <Route exact path='/users/teachers/:id' component={TeacherDetails}></Route>
 

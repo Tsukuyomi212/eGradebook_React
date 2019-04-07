@@ -1,43 +1,19 @@
 import React, { Component } from "react";
 import { REGISTER } from "../../../services/api";
-//
-class RegisterStudentAndParent extends Component {
+
+class RegisterTeacher extends Component {
   constructor(props) {
     super(props);
     this.state = {
       firstName: "",
       lastName: "",
       email: "",
-      schoolClass: 0,
       username: "",
       password: "",
-      confirmPassword: "",
-      parentFirstName: "",
-      parentLastName: "",
-      parentEmail: "",
-      parentUsername: "",
-      parentPassword: "",
-      parentConfirmPassword: ""
+      confirmPassword: ""
     };
-
-    // this.state = {
-    //   firstName: "dddd",
-    //   lastName: "ddd",
-    //   email: "dddd@ddd.dd",
-    //   schoolClass: 0,
-    //   username: "ddddd",
-    //   password: "asdfasdf",
-    //   confirmPassword: "asdfasdf",
-    //   parent: {
-    //     firstName: "ccccc",
-    //     lastName: "ccccc",
-    //     email: "cccc@ccc.cc",
-    //     username: "ccccc",
-    //     password: "asdfasdf",
-    //     confirmPassword: "asdfasdf"
-    //   }
-    // };
   }
+
 
   componentDidMount() {
     const currentUser = localStorage.getItem("token");
@@ -66,28 +42,19 @@ class RegisterStudentAndParent extends Component {
         FirstName: this.state.firstName,
         LastName: this.state.lastName,
         Email: this.state.email,
-        SchoolClass: this.state.schoolClass,
         Username: this.state.username,
         Password: this.state.password,
         ConfirmPassword: this.state.confirmPassword,
-        Parent: {
-          FirstName: this.state.parentFirstName,
-          LastName: this.state.parentLastName,
-          Email: this.state.parentEmail,
-          Username: this.state.parentUsername,
-          Password: this.state.parentPassword,
-          ConfirmPassword: this.state.parentConfirmPassword
-        }
       })
     };
 
-    const path = REGISTER + "/studentandparent";
+    const path = REGISTER + "/teacher";
 
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            this.props.history.push("/users/students");
+            this.props.history.push("/users/teachers");
           });
         } else {
           response
@@ -102,7 +69,7 @@ class RegisterStudentAndParent extends Component {
   render() {
     return (
       <div>
-        <p>Student: </p>
+        <p>Teacher: </p>
         <form>
           <label>First Name: </label>
           <input
@@ -159,63 +126,6 @@ class RegisterStudentAndParent extends Component {
           />
           <br />
         </form>
-        <br />
-        <p>Parent: </p>
-        <form>
-          <label>First Name: </label>
-          <input
-            type="text"
-            name="parentFirstName"
-            placeholder="Enter first name"
-            onChange={this.handleInputChange}
-            value={this.state.parentFirstName}
-          />
-          <br />
-          <label>LastName: </label>
-          <input
-            type="text"
-            name="parentLastName"
-            placeholder="Enter last name"
-            onChange={this.handleInputChange}
-            value={this.state.parentLastName}
-          />
-          <br />
-          <label>Username: </label>
-          <input
-            type="text"
-            name="parentUsername"
-            placeholder="Enter username"
-            onChange={this.handleInputChange}
-            value={this.state.parentUsername}
-          />
-          <br />
-          <label>E-mail: </label>
-          <input
-            type="text"
-            name="parentEmail"
-            placeholder="Enter e-mail"
-            onChange={this.handleInputChange}
-            value={this.state.parentEmail}
-          />
-          <br />
-          <label>Password: </label>
-          <input
-            type="password"
-            name="parentPassword"
-            placeholder="Enter password"
-            onChange={this.handleInputChange}
-            value={this.state.parentPassword}
-          />
-          <br />
-          <label>Confirm Password: </label>
-          <input
-            type="password"
-            name="parentConfirmPassword"
-            placeholder="Confirm password"
-            onChange={this.handleInputChange}
-            value={this.state.parentConfirmPassword}
-          />
-        </form>
         <input
           type="submit"
           value="Create"
@@ -226,11 +136,12 @@ class RegisterStudentAndParent extends Component {
           type="button"
           value="Cancel"
           className="cancel"
-          onClick={() => this.props.history.push("/users/students")}
+          onClick={() => this.props.history.push("/users/teachers")}
         />
       </div>
-    );
+    )
   }
+
 }
 
-export default RegisterStudentAndParent;
+export default RegisterTeacher;
