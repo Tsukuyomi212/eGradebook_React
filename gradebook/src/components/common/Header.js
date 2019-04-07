@@ -12,6 +12,8 @@ class Header extends Component {
       textDecoration: "none",
       color: "black"
     };
+    const role = localStorage.getItem("role");
+    const homepath = `/${role}/home`
 
     return (
       <div className="header">
@@ -21,7 +23,7 @@ class Header extends Component {
             {localStorage.getItem("lastName")}
           </li>
           <li>
-            <Link to="/admin/home" style={linkStyle}>
+            <Link to={homepath} style={linkStyle}>
               Home
             </Link>
           </li>

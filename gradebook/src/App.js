@@ -26,6 +26,8 @@ import TeacherHome from './components/Teacher/TeacherHome';
 import TeacherSchoolClass from './components/Teacher/TeacherSchoolClass';
 import StudentHome from './components/Student/StudentHome';
 import StudentCourseMarks from './components/Teacher/StudentCourseMarks';
+import ParentHome from './components/Parent/ParentHome';
+import ChildCourses from './components/Parent/ChildCourses';
 //import AddMark from './components/Teacher/AddMark';
 
 class App extends Component {
@@ -71,6 +73,8 @@ class App extends Component {
               {/* <Route exact path='/teacher/:teacherId/student/:studentId/course/:courseId/addmark' component={AddMark}></Route> */}
 
               <Route exact path='/student/home' component={StudentHome}></Route>
+              <Route exact path='/parent/home' component={ParentHome}></Route>
+              <Route exact path='/parent/grades/:studentId' component={ChildCourses}></Route>
             </Switch>
           </Fragment>
         </BrowserRouter>
