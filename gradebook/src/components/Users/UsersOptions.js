@@ -20,6 +20,9 @@ const UserOptions = props => {
         <br />
         <br />
         <Link to="/users/parents" style={linkStyle}>Parents</Link>
+        <br />
+        <br />
+        <Link to="/users/admins" style={linkStyle}>Admins</Link>
       </div>
     </div>
   );

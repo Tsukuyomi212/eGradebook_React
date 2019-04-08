@@ -33,6 +33,8 @@ import LogData from './components/Admin/LogData';
 import CreateSubject from './components/Courses/CreateSubject';
 import Subjects from './components/Courses/Subjects';
 import UpdateSubject from './components/Courses/UpdateSubject';
+import RegisterAdmin from './components/Users/Register/RegisterAdmin';
+import AdminsList from './components/Users/AdminsList';
 //import AddMark from './components/Teacher/AddMark';
 
 class App extends Component {
@@ -49,6 +51,8 @@ class App extends Component {
               <Route exact path='/admin/profile/update' component={ProfileUpdate}></Route>
 
               <Route exact path='/users' component={UserOptions}></Route>
+              <Route exact path='/users/admins' component={AdminsList}></Route>
+              <Route exact path='/users/admins/register' component={RegisterAdmin}></Route>
 
               <Route exact path='/users/teachers' component={TeachersInfoAndSettings}></Route>
               <Route exact path='/users/teachers/register' component={RegisterTeacher}></Route>

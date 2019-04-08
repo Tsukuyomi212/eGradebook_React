@@ -80,7 +80,6 @@ class CreateSchoolClass extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            console.log("data:", data);
             const { id } = data;
             const requestOptions = {
               method: "PUT",
