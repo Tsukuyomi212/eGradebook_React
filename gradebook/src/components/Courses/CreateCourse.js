@@ -55,7 +55,6 @@ class CreateCourse extends Component {
 
   handleSelectOption = event => {
     const { target } = event;
-    console.log("target: ", target);
     const { name } = target;
 
     this.setState({
