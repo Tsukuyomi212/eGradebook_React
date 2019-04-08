@@ -141,6 +141,7 @@ class CreateCourse extends Component {
               </button>
             </p>
             <button type="submit">Submit</button>
+            <button onClick={()=>this.props.history.push('/courses')}>Cancel</button>
           </form>
         </div>
       </div>

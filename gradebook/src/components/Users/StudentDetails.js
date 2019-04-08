@@ -91,7 +91,23 @@ class StudentDetails extends Component {
               {this.state.parent.firstName} {this.state.parent.lastName}
             </p>
           </div>
+          
           <div className="edit_details">
+          <Link
+              onClick={() =>
+                this.props.history.push(
+                  "/users/students/" + this.state.id + "/courses"
+                )
+              }
+              style={{
+                textDecoration: "none",
+                color: "rgb(230, 172, 0)",
+                fontSize: "20px"
+              }}
+            >
+              See student's courses
+            </Link>
+            <br />
             <Link
               onClick={() =>
                 this.props.history.push(

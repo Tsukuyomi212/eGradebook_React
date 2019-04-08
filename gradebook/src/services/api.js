@@ -19,6 +19,8 @@ export const TEACHER = `${BASE}/api/gradebook/teacher/`;
 export const STUDENT = `${BASE}/api/gradebook/student/`;
 export const PARENT = `${BASE}/api/gradebook/parent/`;
 
+export const STUDENTCOURSES = `${BASE}/api/studentcourse/`;
+
 // export function call(url, method, body) {
 //   const requestOptions = {
 //     method,

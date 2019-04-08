@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import { COURSES } from "../../services/api";
-import { Link } from 'react-router-dom';
 
-class Courses extends Component {
-  constructor() {
-    super();
-    this.state = { courses: [] };
+class ManageStudentsCourses extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      courses: []
+    }
   }
 
   componentDidMount() {
@@ -39,18 +40,17 @@ class Courses extends Component {
             <p key={course.id}>
               {course.subject.name} / {course.subject.grade}. grade / Classes
               weekly: {course.subject.classesPerWeek} / Teacher:{" "}
-              {course.teacher.firstName} {course.teacher.lastName} 
+              {course.teacher.firstName} {course.teacher.lastName}
             </p>
           ))}
         </div>
-        <Link to='/subjects'>See all subjects</Link>
-        <button onClick={() => this.props.history.push("/admin/home")}>
+  
+        <button onClick={() => this.props.history.push(`/users/students/${this.props.match.params.id}/courses`)}>
           Back
         </button>
-        <button onClick={() => this.props.history.push("/courses/create")}>Create new course</button>
       </div>
     );
   }
 }
 
-export default Courses;
+export default ManageStudentsCourses;
