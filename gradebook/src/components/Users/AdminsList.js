@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-//import Footer from "../common/Footer";
-import { GETSTUDENTS } from "../../services/api";
+import Footer from "../common/Footer";
+import { ADMINS } from "../../services/api";
 import { Link } from "react-router-dom";
-import './UsersList.css';
 
-class StudentsInfoAndSettings extends Component {
+class AdminsList extends Component {
   constructor() {
     super();
     this.state = { users: [] };
@@ -19,13 +18,12 @@ class StudentsInfoAndSettings extends Component {
         Authorization: "Bearer  " + localStorage.getItem("token")
       }
     };
-    fetch(GETSTUDENTS, requestOptions)
+    fetch(ADMINS, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
             data.sort(checkOrder);
-            this.setState({ users: data });
-          });
+            this.setState({ users: data })});
         } else {
           response.text().then(message => alert(message));
         }
@@ -33,39 +31,24 @@ class StudentsInfoAndSettings extends Component {
       .catch(error => console.log(error));
   }
 
+
   render() {
     const { history } = this.props;
-    const linkStyle = {
-      textDecoration: 'none',
-      color: 'rgb(230, 172, 0)'
-    }
     return (
       <div>
         <Header />
         <div>
-        <h4>Students</h4>
-          <Link style={linkStyle} to="/users">Back to all users</Link>
-          <br></br>
-          <Link style={linkStyle} to="/users/students/registerwithparent">Student and parent registration</Link>
-          <br />
-          <Link style={linkStyle} to="/users/students/register">Student registration</Link>
-
-          <div className="users_list">
+            <Link to='/users'>Back to all users</Link>
+            <br></br>
+            <Link to='/users/admins/register'>Register new admin</Link>
+          <p>Admins:</p>
           {this.state.users.map(user => (
             <p key={user.id}>
-              <span>
-                {user.lastName}, {user.firstName}
-              </span>
-              <button
-               id="details_button"
-                onClick={() => history.push("/users/students/" + user.id)} 
-              >
-                See Details
-              </button>
+              <span>{user.lastName}, {user.firstName}</span>
             </p>
           ))}
-          </div>
         </div>
+        <Footer />
       </div>
     );
   }
@@ -81,4 +64,4 @@ function checkOrder(a, b) {
   }
 }
 
-export default StudentsInfoAndSettings;
+export default AdminsList;

@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { GETSTUDENTS } from "../../services/api";
+import { GETPARENTS } from "../../services/api";
 
 class StudentUpdate extends Component {
     constructor(props) {
         super(props);
         this.state = {
             userData: null,
-            id: this.props.match.params.id
+            id: this.props.match.params.id,
+            parents: [],
+            parentId: ''
         }
     }
 
@@ -37,7 +40,22 @@ class StudentUpdate extends Component {
               }
             })
             .catch(error => console.log(error));
+
+            fetch(GETPARENTS, requestOptions)
+            .then(response => {
+              if (response.ok) {
+                response.json().then(data => {
+                  data.sort(checkOrder);
+                  this.setState({ parents: data });
+                });
+              } else {
+                response.text().then(message => alert(message));
+              }
+            })
+            .catch(error => console.log(error));
         }
+
+       
       }
     
       handleInputChange = event => {
@@ -45,7 +63,8 @@ class StudentUpdate extends Component {
         const name = target.name;
     
         this.setState({
-          userData: { ...this.state.userData, [name]: target.value }
+          userData: { ...this.state.userData, [name]: target.value },
+          [name]: target.value
         });
       };
     
@@ -80,6 +99,32 @@ class StudentUpdate extends Component {
           .catch(error => console.log(error));
         event.preventDefault();
       };
+
+      handleParentSelect = event => {
+        const requestOptions = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer  " + localStorage.getItem("token")
+          }
+        };
+
+        fetch(
+          `http://localhost:52940/api/students/${this.state.id}/parent/${this.state.parentId}`,
+          requestOptions
+        )
+          .then(response => {
+            if (response.ok) {
+              alert("Ok");
+              this.props.history.push("/users/students");
+            } else {
+              response
+                .text()
+                .then(message => this.setState({ errorMessage: message }));
+            }
+          })
+          .catch(error => console.log(error));
+      }
     
       goBack = () => this.props.history.push("/users/students/" + this.state.id);
     
@@ -136,9 +181,33 @@ class StudentUpdate extends Component {
                 Cancel
               </button>
             </form>
+
+            <div>
+            <select onChange={this.handleInputChange}
+              value={this.state.parentId}
+              name="parentId">
+              <option>Select parent</option>
+              {this.state.parents.map(parent => (
+                <option key={parent.id} value={parent.id}>
+                  {parent.lastName}, {parent.firstName}
+                </option>
+              ))}
+            </select>
+            <button onClick={this.handleParentSelect}>Ok</button>
+          </div>
           </div>
         );
       }
+}
+
+function checkOrder(a, b) {
+  if (a.lastName > b.lastName) {
+    return 1;
+  } else if (a.lastName === b.lastName) {
+    return a.firstName > b.firstName ? 1 : -1;
+  } else {
+    return -1;
+  }
 }
 
 export default StudentUpdate;

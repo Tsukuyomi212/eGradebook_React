@@ -19,9 +19,10 @@ class RegisterStudentAndParent extends Component {
       parentUsername: "",
       parentPassword: "",
       parentConfirmPassword: "",
-      parents: []
+      parents: [],
+      shouldCreateNewParent: true,
+      parentId: ""
     };
-
   }
 
   componentDidMount() {
@@ -43,7 +44,8 @@ class RegisterStudentAndParent extends Component {
         if (response.ok) {
           response.json().then(data => {
             data.sort(checkOrder);
-            this.setState({ parents: data })});
+            this.setState({ parents: data });
+          });
         } else {
           response.text().then(message => alert(message));
         }
@@ -61,50 +63,119 @@ class RegisterStudentAndParent extends Component {
   };
 
   handleSubmit = event => {
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer  " + localStorage.getItem("token")
-      },
-      body: JSON.stringify({
-        FirstName: this.state.firstName,
-        LastName: this.state.lastName,
-        Email: this.state.email,
-        SchoolClass: this.state.schoolClass,
-        Username: this.state.username,
-        Password: this.state.password,
-        ConfirmPassword: this.state.confirmPassword,
-        Parent: {
-          FirstName: this.state.parentFirstName,
-          LastName: this.state.parentLastName,
-          Email: this.state.parentEmail,
-          Username: this.state.parentUsername,
-          Password: this.state.parentPassword,
-          ConfirmPassword: this.state.parentConfirmPassword
-        }
-      })
-    };
+    const { shouldCreateNewParent } = this.state;
+    if (shouldCreateNewParent) {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer  " + localStorage.getItem("token")
+        },
+        body: JSON.stringify({
+          FirstName: this.state.firstName,
+          LastName: this.state.lastName,
+          Email: this.state.email,
+          SchoolClass: this.state.schoolClass,
+          Username: this.state.username,
+          Password: this.state.password,
+          ConfirmPassword: this.state.confirmPassword,
+          Parent: {
+            FirstName: this.state.parentFirstName,
+            LastName: this.state.parentLastName,
+            Email: this.state.parentEmail,
+            Username: this.state.parentUsername,
+            Password: this.state.parentPassword,
+            ConfirmPassword: this.state.parentConfirmPassword
+          }
+        })
+      };
 
-    const path = REGISTER + "/studentandparent";
+      const path = REGISTER + "/studentandparent";
 
-    fetch(path, requestOptions)
-      .then(response => {
-        if (response.ok) {
-          response.json().then(data => {
-            this.props.history.push("/users/students");
-          });
-        } else {
-          response
-            .text()
-            .then(message => this.setState({ errorMessage: message }));
-        }
-      })
-      .catch(error => console.log(error));
+      fetch(path, requestOptions)
+        .then(response => {
+          if (response.ok) {
+            response.json().then(data => {
+              this.props.history.push("/users/students");
+            });
+          } else {
+            response
+              .text()
+              .then(message => this.setState({ errorMessage: message }));
+          }
+        })
+        .catch(error => console.log(error));
+    } else {
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer  " + localStorage.getItem("token")
+        },
+        body: JSON.stringify({
+          FirstName: this.state.firstName,
+          LastName: this.state.lastName,
+          Email: this.state.email,
+          SchoolClass: this.state.schoolClass,
+          Username: this.state.username,
+          Password: this.state.password,
+          ConfirmPassword: this.state.confirmPassword
+          
+        })
+      };
+
+      const path = REGISTER + "/student";
+
+      fetch(path, requestOptions)
+        .then(response => {
+          if (response.ok) {
+            response.json().then(data => {
+              const { id } = data;
+              console.log('id: ', id);
+              console.log('parentid:', this.state.parentId);
+              
+            const requestOptions = {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer  " + localStorage.getItem("token")
+              }
+            };
+            fetch(
+              `http://localhost:52940/api/students/${id}/parent/${this.state.parentId}`,
+              requestOptions
+            )
+              .then(response => {
+                if (response.ok) {
+                  alert("Ok");
+                  this.props.history.push("/users/students");
+                } else {
+                  response
+                    .text()
+                    .then(message => this.setState({ errorMessage: message }));
+                }
+              })
+              .catch(error => console.log(error));
+            });
+          } else {
+            response
+              .text()
+              .then(message => this.setState({ errorMessage: message }));
+          }
+        })
+        .catch(error => console.log(error));
+    }
+
     event.preventDefault();
   };
 
+  toggleNewParent = () => {
+    const { shouldCreateNewParent } = this.state;
+    this.setState({ shouldCreateNewParent: !shouldCreateNewParent });
+  };
+
   render() {
+    const { shouldCreateNewParent } = this.state;
     return (
       <div>
         <p>Student: </p>
@@ -165,73 +236,86 @@ class RegisterStudentAndParent extends Component {
           <br />
         </form>
         <br />
-        <p>Add parent: </p>
         <div>
-        <select>
-          <option>Select parent</option>
-          {this.state.parents.map(parent => (
-            <option key={parent.id}>{parent.lastName}, {parent.firstName}</option>
-          ))}
-        </select>
-      </div>
-        <p>Or register new:</p>
-        <br />
-        <p>Parent: </p>
-        <form>
-          <label>First Name: </label>
-          <input
-            type="text"
-            name="parentFirstName"
-            placeholder="Enter first name"
-            onChange={this.handleInputChange}
-            value={this.state.parentFirstName}
-          />
-          <br />
-          <label>LastName: </label>
-          <input
-            type="text"
-            name="parentLastName"
-            placeholder="Enter last name"
-            onChange={this.handleInputChange}
-            value={this.state.parentLastName}
-          />
-          <br />
-          <label>Username: </label>
-          <input
-            type="text"
-            name="parentUsername"
-            placeholder="Enter username"
-            onChange={this.handleInputChange}
-            value={this.state.parentUsername}
-          />
-          <br />
-          <label>E-mail: </label>
-          <input
-            type="text"
-            name="parentEmail"
-            placeholder="Enter e-mail"
-            onChange={this.handleInputChange}
-            value={this.state.parentEmail}
-          />
-          <br />
-          <label>Password: </label>
-          <input
-            type="password"
-            name="parentPassword"
-            placeholder="Enter password"
-            onChange={this.handleInputChange}
-            value={this.state.parentPassword}
-          />
-          <br />
-          <label>Confirm Password: </label>
-          <input
-            type="password"
-            name="parentConfirmPassword"
-            placeholder="Confirm password"
-            onChange={this.handleInputChange}
-            value={this.state.parentConfirmPassword}
-          />
-        </form>
+          {shouldCreateNewParent
+            ? "Add Parent or "
+            : "Choose Existing Parent or "}
+          <button onClick={this.toggleNewParent}>
+            {shouldCreateNewParent ? "Choose Existing Parent" : "Add Parent"}
+          </button>
+        </div>
+        {shouldCreateNewParent ? (
+          <div>
+            <p>Parent: </p>
+            <label>First Name: </label>
+            <input
+              type="text"
+              name="parentFirstName"
+              placeholder="Enter first name"
+              onChange={this.handleInputChange}
+              value={this.state.parentFirstName}
+            />
+            <br />
+            <label>LastName: </label>
+            <input
+              type="text"
+              name="parentLastName"
+              placeholder="Enter last name"
+              onChange={this.handleInputChange}
+              value={this.state.parentLastName}
+            />
+            <br />
+            <label>Username: </label>
+            <input
+              type="text"
+              name="parentUsername"
+              placeholder="Enter username"
+              onChange={this.handleInputChange}
+              value={this.state.parentUsername}
+            />
+            <br />
+            <label>E-mail: </label>
+            <input
+              type="text"
+              name="parentEmail"
+              placeholder="Enter e-mail"
+              onChange={this.handleInputChange}
+              value={this.state.parentEmail}
+            />
+            <br />
+            <label>Password: </label>
+            <input
+              type="password"
+              name="parentPassword"
+              placeholder="Enter password"
+              onChange={this.handleInputChange}
+              value={this.state.parentPassword}
+            />
+            <br />
+            <label>Confirm Password: </label>
+            <input
+              type="password"
+              name="parentConfirmPassword"
+              placeholder="Confirm password"
+              onChange={this.handleInputChange}
+              value={this.state.parentConfirmPassword}
+            />
+          </div>
+        ) : (
+          <div>
+            <select onChange={this.handleInputChange}
+              value={this.state.parent}
+              name="parentId">
+              <option>Select parent</option>
+              {this.state.parents.map(parent => (
+                <option key={parent.id} value={parent.id}>
+                  {parent.lastName}, {parent.firstName}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
         <input
           type="submit"
           value="Create"

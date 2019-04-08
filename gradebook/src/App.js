@@ -35,6 +35,8 @@ import Subjects from './components/Courses/Subjects';
 import UpdateSubject from './components/Courses/UpdateSubject';
 import RegisterAdmin from './components/Users/Register/RegisterAdmin';
 import AdminsList from './components/Users/AdminsList';
+import RegisterStudentWithParent from './components/Users/Register/RegisterStudentWithParent';
+import RegisterStudent from './components/Users/Register/RegisterStudent';
 //import AddMark from './components/Teacher/AddMark';
 
 class App extends Component {
@@ -60,7 +62,8 @@ class App extends Component {
               <Route exact path='/users/teachers/:id' component={TeacherDetails}></Route>
 
               <Route exact path='/users/students' component={StudentsInfoAndSettings}></Route>
-              <Route path='/users/students/register' component={RegisterStudentAndParent}></Route>
+              <Route exact path='/users/students/register' component={RegisterStudent}></Route>
+              <Route exact path='/users/students/registerwithparent' component={RegisterStudentWithParent}></Route>
               <Route path='/users/students/update/:id' component={StudentUpdate}></Route>
               <Route path='/users/students/:id' component={StudentDetails}></Route>
 
