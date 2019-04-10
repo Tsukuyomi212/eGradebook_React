@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { REGISTER } from "../../../services/api";
+import Header from "../../common/Header";
+import "../Styles/RegistrationForm.css";
 
 class RegisterStudent extends Component {
   constructor(props) {
@@ -54,6 +56,7 @@ class RegisterStudent extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
+            alert("Student successfully registered!")
             this.props.history.push("/users/students");
           });
         } else {
@@ -69,11 +72,13 @@ class RegisterStudent extends Component {
   render() {
     return (
       <div>
-        <p>Student: </p>
-        <form>
+        <Header />
+        <p className="registration_heading">Student registration form </p>
+        <form className="registration_form registration_font">
           <label>First Name: </label>
           <input
             type="text"
+            className="input_data"
             name="firstName"
             placeholder="Enter first name"
             onChange={this.handleInputChange}
@@ -84,6 +89,7 @@ class RegisterStudent extends Component {
           <input
             type="text"
             name="lastName"
+            className="input_data"
             placeholder="Enter last name"
             onChange={this.handleInputChange}
             value={this.state.lastName}
@@ -92,6 +98,7 @@ class RegisterStudent extends Component {
           <label>Username: </label>
           <input
             type="text"
+            className="input_data"
             name="username"
             placeholder="Enter username"
             onChange={this.handleInputChange}
@@ -101,6 +108,7 @@ class RegisterStudent extends Component {
           <label>E-mail: </label>
           <input
             type="text"
+            className="input_data"
             name="email"
             placeholder="Enter e-mail"
             onChange={this.handleInputChange}
@@ -110,6 +118,7 @@ class RegisterStudent extends Component {
           <label>Password: </label>
           <input
             type="password"
+            className="input_data"
             name="password"
             placeholder="Enter password"
             onChange={this.handleInputChange}
@@ -119,6 +128,7 @@ class RegisterStudent extends Component {
           <label>Confirm Password: </label>
           <input
             type="password"
+            className="input_data"
             name="confirmPassword"
             placeholder="Confirm password"
             onChange={this.handleInputChange}
@@ -126,18 +136,22 @@ class RegisterStudent extends Component {
           />
           <br />
         </form>
-        <input
+        <button
+          className="button button_submit"
           type="submit"
           value="Create"
-          className="submit"
           onClick={this.handleSubmit}
-        />
-        <input
+        >
+          Register student
+        </button>
+        <button
+          className="button button_cancel"
           type="button"
           value="Cancel"
-          className="cancel"
           onClick={() => this.props.history.push("/users/students")}
-        />
+        >
+          Cancel
+        </button>
       </div>
     )
   }

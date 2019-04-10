@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
 import { GETPARENTS } from "../../services/api";
 import { Link } from "react-router-dom";
 
@@ -23,7 +22,8 @@ class ParentsInfoAndSettings extends Component {
         if (response.ok) {
           response.json().then(data => {
             data.sort(checkOrder);
-            this.setState({ users: data })});
+            this.setState({ users: data });
+          });
         } else {
           response.text().then(message => alert(message));
         }
@@ -31,25 +31,42 @@ class ParentsInfoAndSettings extends Component {
       .catch(error => console.log(error));
   }
 
-
   render() {
     const { history } = this.props;
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
         <Header />
         <div>
-            <Link to='/users'>Back to all users</Link>
-            <br></br>
-            {/* <Link>Register new parent</Link> */}
-          <p>Parents:</p>
-          {this.state.users.map(user => (
-            <p key={user.id}>
-              <span>{user.lastName}, {user.firstName}</span>
-              <button onClick={() => history.push('/users/parents/' + user.id)}>See Details</button>
-            </p>
-          ))}
+          <div className="links">
+            <Link to="/users" style={linkStyle}>
+              Back to all users
+            </Link>
+          </div>
+          <br />
+          {/* <Link>Register new parent</Link> */}
+          <p className="user_list_heading">Parents</p>
+          <div className="users_list">
+            {this.state.users.map(user => (
+              <p key={user.id}>
+                <span>
+                  {user.lastName}, {user.firstName}
+                </span>
+                <button
+                  className="details_button"
+                  onClick={() => history.push("/users/parents/" + user.id)}
+                >
+                  See Details
+                </button>
+              </p>
+            ))}
+          </div>
         </div>
-        <Footer />
       </div>
     );
   }

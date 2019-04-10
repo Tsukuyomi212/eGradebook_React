@@ -3,7 +3,7 @@ import Header from "../common/Header";
 //import Footer from "../common/Footer";
 import { GETSTUDENTS } from "../../services/api";
 import { Link } from "react-router-dom";
-import './UsersList.css';
+import "./Styles/UsersList.css";
 
 class StudentsInfoAndSettings extends Component {
   constructor() {
@@ -36,34 +36,43 @@ class StudentsInfoAndSettings extends Component {
   render() {
     const { history } = this.props;
     const linkStyle = {
-      textDecoration: 'none',
-      color: 'rgb(230, 172, 0)'
-    }
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
         <Header />
         <div>
-        <h4>Students</h4>
-          <Link style={linkStyle} to="/users">Back to all users</Link>
-          <br></br>
-          <Link style={linkStyle} to="/users/students/registerwithparent">Student and parent registration</Link>
-          <br />
-          <Link style={linkStyle} to="/users/students/register">Student registration</Link>
-
+          <p className="user_list_heading">Students</p>
+          <div className="links">
+            <Link style={linkStyle} to="/users">
+              Back to all users
+            </Link>
+            <br />
+            <Link style={linkStyle} to="/users/students/registerwithparent">
+              Student and parent registration
+            </Link>
+            <br />
+            <Link style={linkStyle} to="/users/students/register">
+              Student registration
+            </Link>
+          </div>
           <div className="users_list">
-          {this.state.users.map(user => (
-            <p key={user.id}>
-              <span>
-                {user.lastName}, {user.firstName}
-              </span>
-              <button
-               id="details_button"
-                onClick={() => history.push("/users/students/" + user.id)} 
-              >
-                See Details
-              </button>
-            </p>
-          ))}
+            {this.state.users.map(user => (
+              <p key={user.id}>
+                <span>
+                  {user.lastName}, {user.firstName}
+                </span>
+                <button
+                  className="details_button"
+                  onClick={() => history.push("/users/students/" + user.id)}
+                >
+                  Student details
+                </button>
+              </p>
+            ))}
           </div>
         </div>
       </div>

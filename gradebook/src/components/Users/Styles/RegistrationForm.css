@@ -1,0 +1,50 @@
+.registration_form {
+  text-align: center;
+  margin: 3% 15% 2% 15%;
+  padding: 2% 10% 2% 10%;
+  background-color: rgb(220, 174, 29);
+  border-radius: 5px;
+}
+
+.registration_font {
+  font-size: 20px;
+  padding: 5%;
+  color:rgb(26, 41, 48);
+  font-weight: bold;
+}
+
+.button {
+  border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.button_submit {
+  float: right;
+  margin-right: 25%
+}
+
+.button_cancel {
+  float: left;
+  margin-left: 25%
+}
+
+.registration_heading {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(175, 71, 60);
+}
+
+.input_data {
+  width: 30%;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 3px;
+}

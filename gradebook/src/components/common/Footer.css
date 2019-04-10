@@ -5,13 +5,16 @@
   text-align: center;
   margin: 0 5% 0 5%;
   text-shadow: 1px 1px 2px black;
-  color: rgb(230, 184, 0);
+  color: rgb(175, 71, 60);
   font-family: "Dancing Script", cursive;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-
-
-.yellow_text {
-  color: rgb(230, 184, 0);
+.footer_yellow_text {
+  text-align: center;
+  margin: 0 5% 0 5%;
+  text-shadow: 1px 1px 2px black;
+  color: rgb(220, 174, 29);
+  font-family: "Dancing Script", cursive;
+  font-size: 25px;
 }

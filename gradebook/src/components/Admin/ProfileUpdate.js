@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ADMINS } from "../../services/api";
 import Header from "../common/Header";
-import '../common/ProfileUpdate.css';
+import "../common/ProfileUpdate.css";
 
 class ProfileUpdate extends Component {
   constructor(props) {
@@ -64,13 +64,14 @@ class ProfileUpdate extends Component {
         email: this.state.userData.email
       })
     };
-    console.log('requestOptions:', requestOptions);
+    console.log("requestOptions:", requestOptions);
     const path = ADMINS + this.state.id;
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            this.setState({ errorMessage: "", updateMode: false });
+            this.setState({ errorMessage: "" });
+            alert("Admin profile updated successfully!");
           });
         } else {
           response
@@ -85,61 +86,72 @@ class ProfileUpdate extends Component {
   goBack = () => this.props.history.push("/admin/profile");
 
   render() {
-
     return (
       <div className="home_background">
         <Header />
-        <div className="profile_data">
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <span className="data_font">First name: </span>
-            <input
-              placeholder={this.state.firstName}
-              name="firstName"
-              type="text"
-              onChange={this.handleInputChange}
-            />
-          </p>
-          <p>
-            <span className="data_font">Last name: </span>
-            <input
-              placeholder={this.state.lastName}
-              name="lastName"
-              type="text"
-              onChange={this.handleInputChange}
-            />
-          </p>
-          <p>
-            <span className="data_font">Username: </span>
-            <input
-              placeholder={this.state.username}
-              name="userName"
-              type="text"
-              onChange={this.handleInputChange}
-            />
-          </p>
-          <p>
-            <span className="data_font">E-mail: </span>
-            <input
-
-              placeholder={this.state.email}
-              name="email"
-              type="text"
-              onChange={this.handleInputChange}
-            />
-          </p>
-          <button id="button_save_update" onClick= {(event) => {this.handleSubmit(event); this.goBack(event)}}>
-            Save changes
-          </button>
-          <button
-            id="button_cancel_update"
-            type="button"
-            value="Cancel"
-            onClick={this.goBack}
-          >
-            Cancel
-          </button>
-        </form>
+        <p className="page_heading">Update profile data</p>
+        <div className="update_profile_data">
+          <form onSubmit={this.handleSubmit}>
+            <p>
+              <span className="update_data_font">First name: </span>
+              <input
+                className="input_data"
+                placeholder={this.state.firstName}
+                name="firstName"
+                type="text"
+                onChange={this.handleInputChange}
+              />
+            </p>
+            <p>
+              <span className="update_data_font">Last name: </span>
+              <input
+                className="input_data"
+                placeholder={this.state.lastName}
+                name="lastName"
+                type="text"
+                onChange={this.handleInputChange}
+              />
+            </p>
+            <p>
+              <span className="update_data_font">Username: </span>
+              <input
+                className="input_data"
+                placeholder={this.state.username}
+                name="userName"
+                type="text"
+                onChange={this.handleInputChange}
+              />
+            </p>
+            <p>
+              <span className="update_data_font"> E-mail: </span>
+              <input
+                className="input_data"
+                placeholder={this.state.email}
+                name="email"
+                type="text"
+                onChange={this.handleInputChange}
+              />
+            </p>
+            <button
+              className="button"
+              id="button_save_update"
+              onClick={event => {
+                this.handleSubmit(event);
+                this.goBack(event);
+              }}
+            >
+              Save changes
+            </button>
+            <button
+              className="button"
+              id="button_cancel_update"
+              type="button"
+              value="Cancel"
+              onClick={this.goBack}
+            >
+              Cancel
+            </button>
+          </form>
         </div>
       </div>
     );

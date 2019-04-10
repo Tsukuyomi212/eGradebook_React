@@ -1,7 +1,8 @@
 
 import React, { Component } from "react";
 import { REGISTER } from "../../../services/api";
-import { GETPARENTS } from "../../../services/api";
+import "../Styles/RegistrationForm.css";
+import Header from "../../common/Header";
 //
 class RegisterStudentWithParent extends Component {
   constructor(props) {
@@ -30,26 +31,6 @@ class RegisterStudentWithParent extends Component {
     if (!currentUser) {
       this.props.history.push("/");
     }
-
-    //for parent select
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer  " + localStorage.getItem("token")
-      }
-    };
-    fetch(GETPARENTS, requestOptions)
-      .then(response => {
-        if (response.ok) {
-          response.json().then(data => {
-            data.sort(checkOrder);
-            this.setState({ parents: data })});
-        } else {
-          response.text().then(message => alert(message));
-        }
-      })
-      .catch(error => console.log(error));
   }
 
   handleInputChange = event => {
@@ -93,6 +74,7 @@ class RegisterStudentWithParent extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
+            alert("Student and parent successfully registered!")
             this.props.history.push("/users/students");
           });
         } else {
@@ -108,10 +90,13 @@ class RegisterStudentWithParent extends Component {
   render() {
     return (
       <div>
-        <p>Student: </p>
-        <form>
+        <Header />
+        <p className="registration_heading">Student and parent registration form </p>
+        <form className="registration_form registration_font">
+          <p>Student:</p>
           <label>First Name: </label>
           <input
+          className="input_data"
             type="text"
             name="firstName"
             placeholder="Enter first name"
@@ -122,6 +107,7 @@ class RegisterStudentWithParent extends Component {
           <label>LastName: </label>
           <input
             type="text"
+            className="input_data"
             name="lastName"
             placeholder="Enter last name"
             onChange={this.handleInputChange}
@@ -131,6 +117,7 @@ class RegisterStudentWithParent extends Component {
           <label>Username: </label>
           <input
             type="text"
+            className="input_data"
             name="username"
             placeholder="Enter username"
             onChange={this.handleInputChange}
@@ -140,6 +127,7 @@ class RegisterStudentWithParent extends Component {
           <label>E-mail: </label>
           <input
             type="text"
+            className="input_data"
             name="email"
             placeholder="Enter e-mail"
             onChange={this.handleInputChange}
@@ -149,6 +137,7 @@ class RegisterStudentWithParent extends Component {
           <label>Password: </label>
           <input
             type="password"
+            className="input_data"
             name="password"
             placeholder="Enter password"
             onChange={this.handleInputChange}
@@ -158,21 +147,21 @@ class RegisterStudentWithParent extends Component {
           <label>Confirm Password: </label>
           <input
             type="password"
+            className="input_data"
             name="confirmPassword"
             placeholder="Confirm password"
             onChange={this.handleInputChange}
             value={this.state.confirmPassword}
           />
-          <br />
-        </form>
-        <br />
+    
      
         <br />
         <p>Parent: </p>
-        <form>
+        
           <label>First Name: </label>
           <input
             type="text"
+            className="input_data"
             name="parentFirstName"
             placeholder="Enter first name"
             onChange={this.handleInputChange}
@@ -182,6 +171,7 @@ class RegisterStudentWithParent extends Component {
           <label>LastName: </label>
           <input
             type="text"
+            className="input_data"
             name="parentLastName"
             placeholder="Enter last name"
             onChange={this.handleInputChange}
@@ -191,6 +181,7 @@ class RegisterStudentWithParent extends Component {
           <label>Username: </label>
           <input
             type="text"
+            className="input_data"
             name="parentUsername"
             placeholder="Enter username"
             onChange={this.handleInputChange}
@@ -200,6 +191,7 @@ class RegisterStudentWithParent extends Component {
           <label>E-mail: </label>
           <input
             type="text"
+            className="input_data"
             name="parentEmail"
             placeholder="Enter e-mail"
             onChange={this.handleInputChange}
@@ -209,6 +201,7 @@ class RegisterStudentWithParent extends Component {
           <label>Password: </label>
           <input
             type="password"
+            className="input_data"
             name="parentPassword"
             placeholder="Enter password"
             onChange={this.handleInputChange}
@@ -218,37 +211,33 @@ class RegisterStudentWithParent extends Component {
           <label>Confirm Password: </label>
           <input
             type="password"
+            className="input_data"
             name="parentConfirmPassword"
             placeholder="Confirm password"
             onChange={this.handleInputChange}
             value={this.state.parentConfirmPassword}
           />
         </form>
-        <input
+        <button
+          className="button button_submit"
           type="submit"
           value="Create"
-          className="submit"
           onClick={this.handleSubmit}
-        />
-        <input
+        >
+          Register Student and parent
+        </button>
+        <button
+          className="button button_cancel"
           type="button"
           value="Cancel"
-          className="cancel"
           onClick={() => this.props.history.push("/users/students")}
-        />
+        >
+          Cancel
+        </button>
       </div>
     );
   }
 }
 
-function checkOrder(a, b) {
-  if (a.lastName > b.lastName) {
-    return 1;
-  } else if (a.lastName === b.lastName) {
-    return a.firstName > b.firstName ? 1 : -1;
-  } else {
-    return -1;
-  }
-}
 
 export default RegisterStudentWithParent;

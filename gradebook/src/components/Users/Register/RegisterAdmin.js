@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { REGISTER } from "../../../services/api";
+import Header from "./../../common/Header";
 
 class RegisterAdmin extends Component {
   constructor(props) {
@@ -13,7 +14,6 @@ class RegisterAdmin extends Component {
       confirmPassword: ""
     };
   }
-
 
   componentDidMount() {
     const currentUser = localStorage.getItem("token");
@@ -44,7 +44,7 @@ class RegisterAdmin extends Component {
         Email: this.state.email,
         Username: this.state.username,
         Password: this.state.password,
-        ConfirmPassword: this.state.confirmPassword,
+        ConfirmPassword: this.state.confirmPassword
       })
     };
 
@@ -54,7 +54,8 @@ class RegisterAdmin extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            this.props.history.push("/users/teachers");
+            alert("Admin successfully registered!")
+            this.props.history.push("/users/admins");
           });
         } else {
           response
@@ -69,10 +70,12 @@ class RegisterAdmin extends Component {
   render() {
     return (
       <div>
-        <p>Teacher: </p>
-        <form>
+        <Header />
+        <p className="registration_heading">Admin registration form </p>
+        <form className="registration_form registration_font">
           <label>First Name: </label>
           <input
+            className="input_data"
             type="text"
             name="firstName"
             placeholder="Enter first name"
@@ -82,6 +85,7 @@ class RegisterAdmin extends Component {
           <br />
           <label>LastName: </label>
           <input
+            className="input_data"
             type="text"
             name="lastName"
             placeholder="Enter last name"
@@ -91,6 +95,7 @@ class RegisterAdmin extends Component {
           <br />
           <label>Username: </label>
           <input
+            className="input_data"
             type="text"
             name="username"
             placeholder="Enter username"
@@ -100,6 +105,7 @@ class RegisterAdmin extends Component {
           <br />
           <label>E-mail: </label>
           <input
+            className="input_data"
             type="text"
             name="email"
             placeholder="Enter e-mail"
@@ -109,6 +115,7 @@ class RegisterAdmin extends Component {
           <br />
           <label>Password: </label>
           <input
+            className="input_data"
             type="password"
             name="password"
             placeholder="Enter password"
@@ -118,6 +125,7 @@ class RegisterAdmin extends Component {
           <br />
           <label>Confirm Password: </label>
           <input
+            className="input_data"
             type="password"
             name="confirmPassword"
             placeholder="Confirm password"
@@ -129,19 +137,18 @@ class RegisterAdmin extends Component {
         <input
           type="submit"
           value="Create"
-          className="submit"
+          className="button button_submit"
           onClick={this.handleSubmit}
         />
         <input
           type="button"
           value="Cancel"
-          className="cancel"
+          className="button button_cancel"
           onClick={() => this.props.history.push("/users/admins")}
         />
       </div>
-    )
+    );
   }
-
 }
 
 export default RegisterAdmin;

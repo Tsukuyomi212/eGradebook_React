@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { GETTEACHERS } from "../../services/api";
 import Header from "../common/Header";
+import "../common/ProfileUpdate.css";
 
 class TeacherUpdate extends Component {
   constructor(props) {
@@ -86,13 +87,15 @@ class TeacherUpdate extends Component {
 
   render() {
     return (
-      <div>
+      <div className="home_background">
         <Header />
-        <div className="home_options">
+        <p className="page_heading">Update teacher data</p>
+        <div className="update_profile_data">
           <form onSubmit={this.handleSubmit}>
             <p>
-              <span className="data_font">First name:</span>
+              <span className="update_data_font">First name:</span>
               <input
+                className="input_data"
                 placeholder={this.state.firstName}
                 name="firstName"
                 type="text"
@@ -100,8 +103,9 @@ class TeacherUpdate extends Component {
               />
             </p>
             <p>
-              <span className="data_font">Last name:</span>
+              <span className="update_data_font">Last name:</span>
               <input
+                className="input_data"
                 placeholder={this.state.lastName}
                 name="lastName"
                 type="text"
@@ -109,8 +113,9 @@ class TeacherUpdate extends Component {
               />
             </p>
             <p>
-              <span className="data_font">Username:</span>
+              <span className="update_data_font">Username:</span>
               <input
+                className="input_data"
                 placeholder={this.state.username}
                 name="userName"
                 type="text"
@@ -118,8 +123,9 @@ class TeacherUpdate extends Component {
               />
             </p>
             <p>
-              <span className="data_font">E-mail:</span>
+              <span className="update_data_font">E-mail:</span>
               <input
+                className="input_data"
                 placeholder={this.state.email}
                 name="email"
                 type="text"
@@ -127,7 +133,8 @@ class TeacherUpdate extends Component {
               />
             </p>
             <button
-            id="button_save_update"
+              className="button"
+              id="button_save_update"
               onClick={event => {
                 this.handleSubmit(event);
                 this.goBack(event);
@@ -136,13 +143,18 @@ class TeacherUpdate extends Component {
               Save changes
             </button>
 
-            <button id="button_cancel_update" type="button" value="Cancel" onClick={this.goBack}>
+            <button
+              className="button"
+              id="button_cancel_update"
+              type="button"
+              value="Cancel"
+              onClick={this.goBack}
+            >
               Cancel
             </button>
           </form>
         </div>
       </div>
-      
     );
   }
 }

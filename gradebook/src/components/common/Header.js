@@ -10,7 +10,15 @@ class Header extends Component {
   render() {
     const linkStyle = {
       textDecoration: "none",
-      color: "black"
+      color: "rgb(255, 255, 230)",
+      position: "absolute",
+      right: "6%"
+    };
+    const linkStyleHome = {
+      textDecoration: "none",
+      color: "rgb(255, 255, 230)",
+      position: "absolute",
+      left: "6%"
     };
     const role = localStorage.getItem("role");
     const homepath = `/${role}/home`
@@ -19,11 +27,11 @@ class Header extends Component {
       <div className="header">
         <ul className="navbar">
           <li id="loggedin">
-            Logged in as: {localStorage.getItem("firstName")}{" "}
+            Welcome, {localStorage.getItem("firstName")}{" "}
             {localStorage.getItem("lastName")}
           </li>
           <li>
-            <Link to={homepath} style={linkStyle}>
+            <Link to={homepath} style={linkStyleHome}>
               Home
             </Link>
           </li>

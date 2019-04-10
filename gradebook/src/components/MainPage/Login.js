@@ -47,7 +47,7 @@ class Login extends Component {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            console.log("data:", data);
+
             this.setState({
               errorMessage: "",
               firstName: data.name,
@@ -76,6 +76,7 @@ class Login extends Component {
           response
             .text()
             .then(message => this.setState({ errorMessage: message }));
+            alert("Check your username and/or password")
         }
       })
       .catch(error => console.log(error));
@@ -96,7 +97,7 @@ class Login extends Component {
           <br />
           <input
             className="login_input"
-            type="text"
+            type="password"
             name="password"
             placeholder="Enter password"
             onChange={this.handleInput}

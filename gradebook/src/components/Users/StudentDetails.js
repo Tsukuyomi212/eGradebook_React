@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
 import { GETSTUDENTS } from "../../services/api";
 import { Link } from "react-router-dom";
 
@@ -61,6 +60,12 @@ class StudentDetails extends Component {
   }
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(175, 71, 60)",
+      fontSize: "20px",
+      fontWeight: "bold"
+    };
     return (
       <div>
         <div className="home_background">
@@ -82,12 +87,12 @@ class StudentDetails extends Component {
               <span className="data_font">E-mail: </span> {this.state.email}
             </p>
             <p>
-              <span>School Class: </span>
+              <span className="data_font">School Class: </span>
               {this.state.schoolClass.grade}/{this.state.schoolClass.section},{" "}
               {this.state.schoolClass.schoolYear}
             </p>
             <p>
-              <span>Parent: </span>
+              <span className="data_font">Parent: </span>
               {this.state.parent.firstName} {this.state.parent.lastName}
             </p>
           </div>
@@ -99,11 +104,7 @@ class StudentDetails extends Component {
                   "/users/students/" + this.state.id + "/courses"
                 )
               }
-              style={{
-                textDecoration: "none",
-                color: "rgb(230, 172, 0)",
-                fontSize: "20px"
-              }}
+              style={linkStyle}
             >
               See student's courses
             </Link>
@@ -114,27 +115,18 @@ class StudentDetails extends Component {
                   "/users/students/update/" + this.state.id
                 )
               }
-              style={{
-                textDecoration: "none",
-                color: "rgb(230, 172, 0)",
-                fontSize: "20px"
-              }}
+              style={linkStyle}
             >
               Edit details
             </Link>
             <br />
             <Link
               to="/users/students"
-              style={{
-                textDecoration: "none",
-                color: "rgb(230, 172, 0)",
-                fontSize: "20px"
-              }}
+              style={linkStyle}
             >
               Back
             </Link>
           </div>
-          <Footer />
         </div>
       </div>
     );

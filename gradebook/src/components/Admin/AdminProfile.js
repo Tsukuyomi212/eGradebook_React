@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-//import Footer from "../common/Footer";
 import Header from "../common/Header";
 import { ADMINS } from "../../services/api";
 import "../common/ProfilePage.css";
@@ -13,8 +12,7 @@ class AdminProfile extends Component {
       lastName: "",
       username: "",
       email: "",
-      id: localStorage.getItem("id"),
-      updateMode: false
+      id: localStorage.getItem("id")
     };
   }
 
@@ -30,7 +28,7 @@ class AdminProfile extends Component {
         }
       };
       const profileURL = ADMINS + this.state.id;
-      console.log('profileURL:', profileURL);
+      console.log("profileURL:", profileURL);
 
       fetch(profileURL, requestOptions)
         .then(response => {
@@ -57,85 +55,51 @@ class AdminProfile extends Component {
     });
   };
 
-  // handleInputChange = event => {
-  //   const target = event.target;
-  //   const name = target.name;
-
-  //   this.setState({
-  //     [name]: target.value
-  //   });
-  // };
-
-  // handleSubmit = event => {
-  //   const requestOptions = {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer  " + localStorage.getItem("token")
-  //     },
-  //     body: JSON.stringify({
-  //       firstName: this.state.firstName,
-  //       lastName: this.state.lastName,
-  //       username: this.state.username,
-  //       email: this.state.email
-  //     })
-  //   };
-  //   const path = ADMINPROFILE + this.state.id;
-  //   fetch(path, requestOptions)
-  //     .then(response => {
-  //       if (response.ok) {
-  //         response.json().then(data => {
-  //           this.setState({ errorMessage: "", updateMode: false });
-  //         });
-  //       } else {
-  //         response
-  //           .text()
-  //           .then(message => this.setState({ errorMessage: message }));
-  //       }
-  //     })
-  //     .catch(error => console.log(error));
-  //   event.preventDefault();
-  // };
 
   render() {
-
-      return (
-        <div className="home_background" >
-          <Header />
-          <div className="profile_data">
-            <p>
-              <span className="data_font">First name:</span> {this.state.firstName}
-            </p>
-            <p>
-              <span className="data_font">Last name:</span> {this.state.lastName}
-            </p>
-            <p>
-              <span className="data_font">Username:</span> {this.state.username}
-            </p>
-            <p>
-              <span className="data_font">E-mail:</span> {this.state.email}
-            </p>
-          </div>
-          <div className="edit_details">
-            <Link
-              to='/admin/profile/update'
-              onClick={this.toggleUpdateMode}
-              style={{ textDecoration: "none", color: "rgb(230, 172, 0)", fontSize:"20px" }}
-            >
-              Edit details
-            </Link>
-            <br></br>
-            <br></br>
-            <Link
-              to='/admin/home'
-              style={{ textDecoration: "none", color: "rgb(230, 172, 0)", fontSize:"20px" }}
-            >
-              Back
-            </Link>
-          </div>
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(175, 71, 60)",
+      fontSize: "20px"
+    };
+    return (
+      <div className="home_background">
+        <Header />
+        <p className="page_heading">My Profile</p>
+        <div className="profile_data">
+          <p>
+            <span className="data_font">First name:</span>{" "}
+            {this.state.firstName}
+          </p>
+          <p>
+            <span className="data_font">Last name:</span> {this.state.lastName}
+          </p>
+          <p>
+            <span className="data_font">Username:</span> {this.state.username}
+          </p>
+          <p>
+            <span className="data_font">E-mail:</span> {this.state.email}
+          </p>
         </div>
-      );
-  
+        <div className="edit_details">
+          <Link
+            to="/admin/profile/update"
+            onClick={this.toggleUpdateMode}
+            style={linkStyle}
+          >
+            Edit details
+          </Link>
+          <br />
+          <br />
+          <Link
+            to="/admin/home"
+            style={linkStyle}
+          >
+            Back
+          </Link>
+        </div>
+      </div>
+    );
   }
 }
 

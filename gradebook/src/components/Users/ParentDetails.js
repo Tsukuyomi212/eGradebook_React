@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
 import { GETPARENTS } from "../../services/api";
 import { Link } from "react-router-dom";
 
@@ -54,11 +53,18 @@ class ParentDetails extends Component {
 
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(175, 71, 60)",
+      fontSize: "20px",
+      fontWeight: "bold"
+    };
 
     return (
       <div>
         <div className="home_background">
           <Header />
+          <p className="page_heading">Parent profile</p>
           <div className="profile_data">
             <p>
               <span className="data_font">First name: </span>{" "}
@@ -76,11 +82,11 @@ class ParentDetails extends Component {
               <span className="data_font">E-mail: </span> {this.state.email}
             </p>
             <p>
-              <span>Children: </span>
+              <span className="data_font">Children: </span>
             </p>
             <ul>
               {this.state.children.map(child => (
-                <li key={child.id}>
+                <li key={child.id} className="courses_list">
                   {child.firstName} {child.lastName}
                 </li>
               ))}
@@ -93,27 +99,18 @@ class ParentDetails extends Component {
                   "/users/parents/update/" + this.state.id
                 )
               }
-              style={{
-                textDecoration: "none",
-                color: "rgb(230, 172, 0)",
-                fontSize: "20px"
-              }}
+              style={linkStyle}
             >
               Edit details
             </Link>
             <br />
             <Link
               to="/users/parents"
-              style={{
-                textDecoration: "none",
-                color: "rgb(230, 172, 0)",
-                fontSize: "20px"
-              }}
+              style={linkStyle}
             >
               Back
             </Link>
           </div>
-          <Footer />
         </div>
       </div>
     );

@@ -15,7 +15,7 @@ import StudentUpdate from './components/Users/StudentUpdate';
 import ParentsInfoAndSettings from './components/Users/ParentsInfoAndSettings';
 import ParentDetails from './components/Users/ParentDetails';
 import ParentUpdate from './components/Users/ParentUpdate';
-import RegisterStudentAndParent from './components/Users/Register/RegisterStudentAndParent';
+//import RegisterStudentAndParent from './components/Users/Register/RegisterStudentAndParent';
 import SchoolYears from './components/SchoolYear/SchoolYears';
 import SchoolClasses from './components/SchoolClass/SchoolClasses';
 import CreateSchoolClass from './components/SchoolClass/CreateSchoolClass';

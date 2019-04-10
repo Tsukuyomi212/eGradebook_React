@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { GETSTUDENTS } from "../../services/api";
 import { GETPARENTS } from "../../services/api";
 import { SCHOOLCLASS } from "../../services/api";
+import "../common/ProfileUpdate.css";
+import Header from "../common/Header";
 
 class StudentUpdate extends Component {
   constructor(props) {
@@ -171,17 +173,20 @@ class StudentUpdate extends Component {
         }
       })
       .catch(error => console.log(error));
-  }
+  };
 
   goBack = () => this.props.history.push("/users/students/" + this.state.id);
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="home_background">
+        <Header />
+        <p className="page_heading">Update student data</p>
+        <form onSubmit={this.handleSubmit} className="update_student_data">
           <p>
-            <span className="data_font">First name:</span>
+            <span className="update_data_font">First name:</span>
             <input
+              className="input_data"
               placeholder={this.state.firstName}
               name="firstName"
               type="text"
@@ -189,8 +194,9 @@ class StudentUpdate extends Component {
             />
           </p>
           <p>
-            <span className="data_font">Last name:</span>
+            <span className="update_data_font">Last name:</span>
             <input
+              className="input_data"
               placeholder={this.state.lastName}
               name="lastName"
               type="text"
@@ -198,8 +204,9 @@ class StudentUpdate extends Component {
             />
           </p>
           <p>
-            <span className="data_font">Username:</span>
+            <span className="update_data_font">Username:</span>
             <input
+              className="input_data"
               placeholder={this.state.username}
               name="userName"
               type="text"
@@ -207,61 +214,73 @@ class StudentUpdate extends Component {
             />
           </p>
           <p>
-            <span className="data_font">E-mail:</span>
+            <span className="update_data_font">E-mail:</span>
             <input
+              className="input_data"
               placeholder={this.state.email}
               name="email"
               type="text"
               onChange={this.handleInputChange}
             />
           </p>
+
+          <div>
+            <p className="update_data_font">Assign parent to student:
+            <select
+              onChange={this.handleInputChange}
+              value={this.state.parentId}
+              name="parentId"
+            >
+              <option>Select parent</option>
+              {this.state.parents.map(parent => (
+                <option key={parent.id} value={parent.id}>
+                  {parent.lastName}, {parent.firstName}
+                </option>
+              ))}
+            </select> 
+            <button onClick={this.handleParentSelect} className="ok_button">OK</button>
+            </p>
+          </div>
+
+          <div>
+            <p className="update_data_font">Assign student to class: 
+            <select
+              onChange={this.handleInputChange}
+              value={this.state.parentId}
+              name="schoolClassId"
+            >
+              <option>Select school class</option>
+              {this.state.schoolClasses.map(schoolClass => (
+                <option key={schoolClass.id} value={schoolClass.id}>
+                  {schoolClass.grade} / {schoolClass.section}
+                </option>
+              ))}
+            </select>
+            <button onClick={this.handleSchoolClassSelect} className="ok_button">OK</button>
+            </p>
+          </div>
           <button
-            onClick={event => {
-              this.handleSubmit(event);
-              this.goBack(event);
-            }}
-          >
-            Save changes
-          </button>
+          className="button"
+          id="button_save_update"
+          onClick={event => {
+            this.handleSubmit(event);
+            this.goBack(event);
+          }}
+        >
+          Save changes
+        </button>
 
-          <button type="button" value="Cancel" onClick={this.goBack}>
-            Cancel
-          </button>
+        <button
+          type="button"
+          value="Cancel"
+          onClick={this.goBack}
+          className="button"
+          id="button_cancel_update"
+        >
+          Cancel
+        </button>
         </form>
-
-        <div>
-          <p>Assign parent to student: </p>
-          <select
-            onChange={this.handleInputChange}
-            value={this.state.parentId}
-            name="parentId"
-          >
-            <option>Select parent</option>
-            {this.state.parents.map(parent => (
-              <option key={parent.id} value={parent.id}>
-                {parent.lastName}, {parent.firstName}
-              </option>
-            ))}
-          </select>
-          <button onClick={this.handleParentSelect}>Ok</button>
-        </div>
-
-        <div>
-          <p>Assign student to class: </p>
-          <select
-            onChange={this.handleInputChange}
-            value={this.state.parentId}
-            name="schoolClassId"
-          >
-            <option>Select school class</option>
-            {this.state.schoolClasses.map(schoolClass => (
-              <option key={schoolClass.id} value={schoolClass.id}>
-                {schoolClass.grade} / {schoolClass.section}
-              </option>
-            ))}
-          </select>
-          <button onClick={this.handleSchoolClassSelect}>Ok</button>
-        </div>
+        
       </div>
     );
   }

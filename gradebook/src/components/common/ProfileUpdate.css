@@ -1,7 +1,68 @@
 #button_cancel_update {
- float: left;
+  margin-top: 15%;
+  float: left;
 }
 
 #button_save_update {
   float: right;
+  margin-top: 15%;
+}
+
+.update_data_font {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Dancing Script", cursive;
+  color: rgb(26, 41, 48);
+}
+
+.update_profile_data {
+  text-align: center;
+  margin: 5% 15% 10% 15%;
+  padding: 2% 10% 2% 10%;
+  background-color: rgb(175, 71, 60, 0.8);
+  border-radius: 5px;
+}
+
+.button {
+  border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: rgba(60, 60, 60, 0.7);
+}
+
+.input_data {
+  width: 30%;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.page_heading {
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(175, 71, 60);
+}
+
+.update_student_data {
+  text-align: center;
+  margin: 5% 15% 10% 15%;
+  padding: 2% 10% 2% 10%;
+  background-color: rgb(220, 174, 29);
+  border-radius: 5px;
+}
+
+.ok_button {
+  border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 3px;
 }
