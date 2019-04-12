@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { SCHOOLCLASS } from "../../services/api";
 import { SCHOOLYEARS } from "../../services/api";
+import Header from "../common/Header";
 
 class CreateSchoolClass extends Component {
   constructor(props) {
@@ -118,56 +119,78 @@ class CreateSchoolClass extends Component {
   render() {
     return (
       <div>
-        <form>
-          <label>Grade: </label>
-          <input
-            type="number"
-            name="grade"
-            placeholder="Enter grade"
-            onChange={this.handleInputChange}
-            value={this.state.grade}
-          />
-          <br />
-          <label>Section: </label>
-          <input
-            type="text"
-            name="section"
-            placeholder="Enter section"
-            onChange={this.handleInputChange}
-            value={this.state.section}
-          />
-          <br />
-          <label>School Year: </label>
-          <select
-            name="schoolYearId"
-            value={this.state.schoolYearId}
-            onChange={this.handleSchoolYearChange}
+        <Header />
+        <div>
+          <h3 className="courses_heading">Create new School Class</h3>
+          <form className="create-form">
+            <label className="blue_font">Grade: </label>
+            {/* <input
+              type="number"
+              className="input_data"
+              name="grade"
+              placeholder="Enter grade"
+              onChange={this.handleInputChange}
+              value={this.state.grade}
+            /> */}
+            <select
+              className="input"
+              name="grade"
+              onChange={this.handleInputChange}
+              value={this.state.grade}
+            >
+              <option>Select grade</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <br />
+            <label className="blue_font">Section: </label>
+            <input
+              type="text"
+              className="input_data"
+              name="section"
+              placeholder="Enter section"
+              onChange={this.handleInputChange}
+              value={this.state.section}
+            />
+            <br />
+            <label className="blue_font">School Year: </label>
+            <select
+              name="schoolYearId"
+              value={this.state.schoolYearId}
+              onChange={this.handleSchoolYearChange}
+            >
+              {this.state.schoolYears.map(schoolYear => {
+                return (
+                  <option key={schoolYear.id} value={schoolYear.id}>
+                    {schoolYear.name}
+                  </option>
+                );
+              })}
+            </select>
+          </form>
+          <button
+            type="submit"
+            value="Create"
+            className="button button_submit"
+            onClick={this.handleSubmit}
           >
-            {this.state.schoolYears.map(schoolYear => {
-              return (
-                <option key={schoolYear.id} value={schoolYear.id}>
-                  {schoolYear.name}
-                </option>
-              );
-            })}
-          </select>
-        </form>
-        <button
-          type="submit"
-          value="Create"
-          className="submit"
-          onClick={this.handleSubmit}
-        >
-          Submit
-        </button>
-        <button
-          type="button"
-          value="Cancel"
-          className="cancel"
-          onClick={() => this.props.history.push("/schoolclasses")}
-        >
-          Back
-        </button>
+            Submit
+          </button>
+          <button
+            type="button"
+            value="Cancel"
+            className="button button_cancel"
+            onClick={() => this.props.history.push("/schoolclasses")}
+          >
+            Back
+          </button>
+        </div>
       </div>
     );
   }

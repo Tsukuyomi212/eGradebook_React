@@ -96,10 +96,10 @@ class UpdateMark extends Component {
           <option>4</option>
           <option>5</option>
         </select>
-        <button className="submit" onClick={this.handleSubmit}>
+        <button className="button2" onClick={this.handleSubmit}>
           Submit
         </button>
-        <button onClick={this.props.onCancel}>Cancel</button>
+        <button className="button2" onClick={this.props.onCancel}>Cancel</button>
       </div>
     );
   }

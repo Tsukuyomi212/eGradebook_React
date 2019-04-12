@@ -55,22 +55,22 @@ class StudentProfile extends Component {
     return (
       <div>
         <p>
-          <span>First name:</span> {this.state.firstName}
+          <span className="student_font">First name:</span> {this.state.firstName}
         </p>
         <p>
-          <span>Last name:</span> {this.state.lastName}
+          <span className="student_font">Last name:</span> {this.state.lastName}
         </p>
         <p>
-          <span>Username:</span> {this.state.username}
+          <span className="student_font">Username:</span> {this.state.username}
         </p>
         <p>
-          <span>E-mail:</span> {this.state.email}
+          <span className="student_font">E-mail:</span> {this.state.email}
         </p>
         <p>
-          <span>School Class:</span> {this.state.grade} / {this.state.section}
+          <span className="student_font">School Class:</span> {this.state.grade} / {this.state.section}
         </p>
         <p>
-          <span>School Year: </span> {this.state.schoolYear}
+          <span className="student_font">School Year: </span> {this.state.schoolYear}
         </p>
         
       </div>

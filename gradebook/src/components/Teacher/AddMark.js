@@ -83,7 +83,7 @@ class AddMark extends Component {
           <button
             type="submit"
             value="Create"
-            className="submit"
+            className="button2"
             onClick={this.handleSubmit}
           >
             Submit

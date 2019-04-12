@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { SCHOOLCLASS, SCHOOLYEARS } from "../../services/api";
+import Header from "../common/Header";
+import { Link } from "react-router-dom";
 
 class SchoolClassDetails extends Component {
   constructor(props) {
@@ -110,66 +112,81 @@ class SchoolClassDetails extends Component {
   };
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
+        <Header />
         <div>
-          <p>
-            <span>School Class: </span>
-            {this.state.grade} / {this.state.section}
-            <span>
-              <button>Edit</button>
-            </span>
-          </p>
-          <p>
-            <span>School Year: </span>
-            {this.state.schoolYearName}
-          </p>
-          {this.state.schoolYearName !== "SchoolYear to be added" ? (
-            <p>Change school year: </p>
-          ) : (
-            <p>Add school year: </p>
-          )}
-          <select
-            name="schoolYearId"
-            value={this.state.schoolYearId}
-            onChange={this.handleSchoolYearChange}
-          >
-            {/* {this.state.schoolYearName === "SchoolYear to be added" && (
+          <h3 className="courses_heading">School Class details</h3>
+          <div className="subject_list">
+            <p>
+              <span className="blue_font">School Class: </span>
+              {this.state.grade} / {this.state.section}
+              <span>
+                <button className="ok_button create_space">Edit</button>
+              </span>
+            </p>
+            <p>
+              <span className="blue_font">School Year: </span>
+              {this.state.schoolYearName}
+            </p>
+            <div className="change_year">
+            {this.state.schoolYearName !== "SchoolYear to be added" ? (
+              <p>Change school year: </p>
+            ) : (
+              <p>Add school year: </p>
+            )}
+            <select
+              name="schoolYearId"
+              value={this.state.schoolYearId}
+              onChange={this.handleSchoolYearChange}
+            >
+              {/* {this.state.schoolYearName === "SchoolYear to be added" && (
               <option key={-1} value={-1}>
                 TBA
               </option>
             )} */}
 
-            {this.state.schoolYears.map(schoolYear => {
-              return (
-                <option key={schoolYear.id} value={schoolYear.id}>
-                  {schoolYear.name}
-                </option>
-              );
-            })}
-          </select>
-          <button className="submit" onClick={this.handleAddSchoolYear}>
-            Ok
-          </button>
-          <p>
-            <span>Students: </span>
-          </p>
-          {this.state.students.map(student => (
-            <p key={student.id}>
-              {student.lastName}, {student.firstName}
-              <button
-                onClick={() =>
-                  this.props.history.push("/users/students/" + student.id)
-                }
-              >
-                See details
-              </button>
+              {this.state.schoolYears.map(schoolYear => {
+                return (
+                  <option key={schoolYear.id} value={schoolYear.id}>
+                    {schoolYear.name}
+                  </option>
+                );
+              })}
+            </select>
+            <button className="ok_button create_space" onClick={this.handleAddSchoolYear}>
+              Ok
+            </button>
+            </div>
+            <p>
+              <span className="blue_font">Students: </span>
             </p>
-          ))}
+            {this.state.students.map(student => (
+              <p key={student.id} className="students_list">
+                {student.lastName}, {student.firstName}
+                <button
+                className="ok_button create_space"
+                  onClick={() =>
+                    this.props.history.push("/users/students/" + student.id)
+                  }
+                >
+                  See details
+                </button>
+              </p>
+            ))}
+          </div>
         </div>
-        <button onClick={() => this.props.history.push("/schoolclasses")}>
-          Back
-        </button>
+        <div className="links">
+          <Link to="/schoolclasses" style={linkStyle}>
+            Back{" "}
+          </Link>
+        </div>
       </div>
     );
   }

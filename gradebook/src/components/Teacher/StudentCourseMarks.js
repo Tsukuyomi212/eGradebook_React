@@ -3,6 +3,8 @@ import { TEACHER } from "../../services/api";
 import AddMark from "./AddMark";
 import UpdateMark from "./UpdateMark";
 import { format, getYear, isWithinRange } from "date-fns";
+import Header from "../common/Header";
+import { Link } from "react-router-dom";
 
 class StudentCourseMarks extends Component {
   constructor(props) {
@@ -111,70 +113,88 @@ class StudentCourseMarks extends Component {
   };
 
   render() {
-    const categories = ["Semester", "Mark", "Date added"];
+    const categories = ["Semester", "Mark", "Date added", "Update", "Delete"];
     const { courseId } = this.props.match.params;
-    const {teacherId, schoolClassId} = this.state;
+    const { teacherId, schoolClassId } = this.state;
     return (
       <div>
-        <button onClick={() => this.props.history.push(`/teacher/${teacherId}/course/${courseId}/schoolclass/${schoolClassId}`)}>Back</button>
-        <h5>
-          {this.state.schoolClassGrade} / {this.state.schoolClassSection} (
-          {this.state.schoolYear})
-        </h5>
-        <h5>
-          Student: {this.state.firstName} {this.state.lastName}
-        </h5>
-        <h5>Course: {this.state.courseName}</h5>
-        <p>
-          Add new mark:
-          <AddMark
-            onAddMark={this.addMark}
-            teacherId={this.state.teacherId}
-            courseId={courseId}
-            studentId={this.state.studentId}
-          />
-        </p>
-        <h5>Student's marks form course:</h5>
-        <table>
-          <thead>
-            <tr>
-              {categories.map((item, index) => (
-                <th key={index}>{item}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.marks.map((mark, index) => {
-              const markDate = new Date(mark.dateAdded);
-              return (
-                <tr key={mark.id}>
-                  <td>{getSemester(markDate)}</td>
-                  <td>{mark.value}</td>
-                  <td>{format(markDate, "MMMM Do YYYY")}</td>
-                  <td>
-                    {mark.canUpdate ? (
-                      <UpdateMark
-                        teacherId={this.state.teacherId}
-                        onUpdateMark={this.updateMark(index)}
-                        markId={mark.id}
-                        onCancel={this.disableMarkUpdate(index)}
-                      />
-                    ) : (
-                      <button onClick={this.enableMarkUpdate(index)}>
-                        Update
+        <Header />
+        <div className="home_background">
+          <button
+            className="button1"
+            onClick={() =>
+              this.props.history.push(
+                `/teacher/${teacherId}/course/${courseId}/schoolclass/${schoolClassId}`
+              )
+            }
+          >
+            Back
+          </button>
+          <h5 className="student_heading">
+            {this.state.schoolClassGrade} / {this.state.schoolClassSection} (
+            {this.state.schoolYear})
+          </h5>
+          <h5 className="student_heading">
+            Student: {this.state.firstName} {this.state.lastName}
+          </h5>
+          <h5 className="student_heading">Course: {this.state.courseName}</h5>
+          <p className="student_heading">
+            Add new mark:
+            <AddMark
+              onAddMark={this.addMark}
+              teacherId={this.state.teacherId}
+              courseId={courseId}
+              studentId={this.state.studentId}
+            />
+          </p>
+          <h5 className="student_heading">Student's marks form course:</h5>
+          <table>
+            <thead>
+              <tr>
+                {categories.map((item, index) => (
+                  <th key={index}>{item}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.marks.map((mark, index) => {
+                const markDate = new Date(mark.dateAdded);
+                return (
+                  <tr key={mark.id}>
+                    <td>{getSemester(markDate)}</td>
+                    <td>{mark.value}</td>
+                    <td>{format(markDate, "MMMM Do YYYY")}</td>
+                    <td>
+                      {mark.canUpdate ? (
+                        <UpdateMark
+                          teacherId={this.state.teacherId}
+                          onUpdateMark={this.updateMark(index)}
+                          markId={mark.id}
+                          onCancel={this.disableMarkUpdate(index)}
+                        />
+                      ) : (
+                        <button
+                          className="button2"
+                          onClick={this.enableMarkUpdate(index)}
+                        >
+                          Update
+                        </button>
+                      )}
+                    </td>
+                    <td>
+                      <button
+                        className="button2"
+                        onClick={() => this.deleteMark(mark.id)}
+                      >
+                        Delete
                       </button>
-                    )}
-                  </td>
-                  <td>
-                    <button onClick={() => this.deleteMark(mark.id)}>
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }

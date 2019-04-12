@@ -9,9 +9,13 @@ class StudentHome extends Component {
     return (
       <div>
         <Header />
-        <div>
+        <div className="center">
+        <div className="profile_student">
           <StudentProfile />
+          </div>
+          <div id="student-table">
           <StudentCourses />
+          </div>
         </div>
       </div>
     )

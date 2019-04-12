@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { STUDENTCOURSES } from "../../services/api";
 import { Link } from "react-router-dom";
 import { COURSES } from "../../services/api";
+import Header from "../common/Header";
+import "./Styles/StudentCourses.css";
 
 class StudentTakesCourses extends Component {
   constructor(props) {
@@ -82,12 +84,12 @@ class StudentTakesCourses extends Component {
     };
 
     const path =
-    STUDENTCOURSES +
-    "student/" +
-    this.state.studentId +
-    "/course/" +
-    this.state.aCourseId;
-    console.log('path: ', path);
+      STUDENTCOURSES +
+      "student/" +
+      this.state.studentId +
+      "/course/" +
+      this.state.aCourseId;
+    console.log("path: ", path);
     fetch(path, requestOptions)
       .then(response => {
         if (response.ok) {
@@ -103,56 +105,71 @@ class StudentTakesCourses extends Component {
   };
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     const categories = ["Course", "Marks"];
     const pathBackToStudentDetails = `/users/students/${this.state.studentId}`;
     return (
       <div>
-        <button
-          onClick={() => this.props.history.push(pathBackToStudentDetails)}
-        >
-          Back
-        </button>
-        <p id="name">
-          <span className="pretty_font">Student:</span> {this.state.firstName}{" "}
-          {this.state.lastName}
-        </p>
-        <table className="student_courses">
-          <thead>
-            <tr>
-              {categories.map((item, index) => (
-                <th key={index}>{item}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.courses.map(course => (
-              <tr key={course.id}>
-                <td>{course.courseName}</td>
-                <td>
-                  {course.marks.map(mark => (
-                    <span key={mark.id}> {mark.value} </span>
+        <Header />
+        <div className="home_background">
+          <div className="links">
+            <Link to={pathBackToStudentDetails} style={linkStyle}>
+              Back to student profile
+            </Link>
+          </div>
+          <p id="name">
+            <span className="yellow_font">Student:</span>{" "}
+            <span id="student_name">
+              {this.state.firstName} {this.state.lastName}
+            </span>
+          </p>
+          <div className="table_courses">
+            <table>
+              <thead>
+                <tr>
+                  {categories.map((item, index) => (
+                    <th key={index}>{item}</th>
                   ))}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div>
-          <p>Add more courses: </p>
-          <select
-            onChange={this.handleSelectOption}
-            value={this.state.aCourseId}
-            name="aCourseId"
-          >
-            <option>Select a course from list</option>
-            {this.state.allCourses.map(aCourse => (
-              <option key={aCourse.id} value={aCourse.id}>
-                {aCourse.subject.name} / {aCourse.subject.grade}. grade /{" "}
-                {aCourse.teacher.firstName} {aCourse.teacher.lastName}
-              </option>
-            ))}
-          </select>
-          <button onClick={this.handleSubmit}>Add</button>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.courses.map(course => (
+                  <tr key={course.id}>
+                    <td>{course.courseName}</td>
+                    <td>
+                      {course.marks.map(mark => (
+                        <span key={mark.id}> {mark.value}, </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="select_courses">
+            <p className="yellow_font">Add more courses: </p>
+            <select
+              onChange={this.handleSelectOption}
+              value={this.state.aCourseId}
+              name="aCourseId"
+            >
+              <option>Select a course from list</option>
+              {this.state.allCourses.map(aCourse => (
+                <option key={aCourse.id} value={aCourse.id}>
+                  {aCourse.subject.name} / {aCourse.subject.grade}. grade /{" "}
+                  {aCourse.teacher.firstName} {aCourse.teacher.lastName}
+                </option>
+              ))}
+            </select>
+            <button onClick={this.handleSubmit} className="select_button">
+              Add
+            </button>
+          </div>
         </div>
       </div>
     );

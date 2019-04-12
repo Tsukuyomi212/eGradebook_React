@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { TEACHER } from "../../services/api";
+import Header from "../common/Header";
+import { Link } from "react-router-dom";
 
 class TeacherSchoolClass extends Component {
   constructor(props) {
@@ -46,18 +48,28 @@ class TeacherSchoolClass extends Component {
 
   render() {
     const { teacherId, courseId } = this.props.match.params;
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
-        <button onClick={() => this.props.history.push('/teacher/home')}>Back</button>
-        <h4>
+        <Header />
+        <div className="courses_links">
+          <Link to='/teacher/home'  style={linkStyle}>Back</Link>
+        </div>
+        <h4 className="class_heading">
           {this.state.grade} / {this.state.section} ({this.state.schoolYearName}
           )
         </h4>
-        <ol>
+        <ol className="center">
           {this.state.students.map(student => (
-            <li key={student.id}>
+            <li key={student.id} className="students_list">
               {student.lastName}, {student.firstName}
               <button
+              className="ok_button create_space"
                 onClick={() =>
                   this.props.history.push(`/teacher/${teacherId}/student/${student.id}/course/${courseId}`)
                 }

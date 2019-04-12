@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {PARENT} from '../../services/api';
 import Header from '../common/Header';
+import { Link } from "react-router-dom";
 
 class ChildGrades extends Component {
   constructor(props) {
@@ -48,12 +49,22 @@ class ChildGrades extends Component {
   }
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     const categories = ["Course", "Marks"];
     return (
       <div>
-        <button onClick={() => this.props.history.push('/parent/home')}>Back</button>
+        <Header />
+        <div className="courses_links">
+        <Link to="/parent/home" style={linkStyle}>Back</Link>
+        </div>
+        
         <p id="name">
-          <span className="pretty_font">Student:</span> {this.state.firstName}{" "}
+          <span className="student_font">Student:</span> {this.state.firstName}{" "}
           {this.state.lastName}
         </p>
         <table className="student_courses">
@@ -70,7 +81,7 @@ class ChildGrades extends Component {
                 <td>{course.courseName}</td>
                 <td>
                   {course.marks.map(mark => (
-                    <span key={mark.id}> {mark.value} </span>
+                    <span key={mark.id}> {mark.value}, </span>
                   ))}
                 </td>
               </tr>

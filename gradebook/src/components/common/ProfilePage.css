@@ -48,3 +48,74 @@
   color: rgb(255, 255, 230);
   border-radius: 5px;
 }
+
+.teacher_profile_font {
+    font-family: Arial;
+    color: rgb(26, 41, 48);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.my_profile {
+   margin-left: 10%;
+}
+
+.class_heading {
+    margin-left: 10%;
+    font-size: 25px;
+}
+
+.center {
+    margin-left: 8%;
+}
+
+.button1 {
+  border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  position: absolute;
+  right: 5%
+}
+
+.button2 {
+    border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.student_heading {
+    margin-left: 8%;
+    font-size: 17px;
+}
+.student_font {
+    font-family: "Dancing Script", cursive;
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(26, 41, 48);
+}
+
+.profile_student {
+
+    margin-left: 10%;
+    margin-top: 5%
+}
+
+.profile_parent {
+    margin-top: 5%;
+    text-align: center;
+}
+
+.list {
+    list-style: none;
+    margin-left: -5%;
+}
+
+body {
+    background-image: url("../../images/pattern.jpg");
+  }

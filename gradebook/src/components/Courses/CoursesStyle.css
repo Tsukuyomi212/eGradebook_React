@@ -1,0 +1,78 @@
+body {
+  background-image: url("../../images/pattern.jpg");
+}
+
+.courses_heading {
+  color: rgb(175, 71, 60);
+  font-family: "Dancing Script";
+  margin-left: 8%;
+}
+
+.courses_links {
+  position: absolute;
+  right: 5%;
+  margin-top: 2%;
+}
+
+.subject_list {
+  margin-left: 5%;
+  padding: 5px;
+  list-style: circle;
+}
+
+.create-form {
+  text-align: center;
+  padding: 5%;
+  background-color: rgb(220, 174, 29);
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 5%;
+}
+
+.input {
+  margin: 15px;
+}
+
+.create_space {
+  margin: 15px;
+}
+
+.blue_font {
+  color: rgb(26, 41, 48);
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.button_create_course {
+  border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.classes_list {
+  margin-left: 10%;
+  color: rgb(26, 41, 48);
+  font-size: 18px;
+}
+
+.change_year {
+  margin-left: 5%;
+}
+
+.students_list {
+  margin-left: 5%;
+}
+
+.calendar {
+  margin: 0% 33% 0% 33%;
+}
+
+.centerbutton {
+  margin: 0% 41% 0% 41%;
+}

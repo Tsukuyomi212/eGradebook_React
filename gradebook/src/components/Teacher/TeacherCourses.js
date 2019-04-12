@@ -38,8 +38,8 @@ class TeacherCourses extends Component {
   render() {
     return (
       <div>
-        <p>
-          Teaches courses:{" "}
+        <p >
+          <span className="teacher_profile_font">Teaches courses:</span>{" "}
           {this.state.courses.map(course => (
             <span key={course.id}>{course.subject.name} </span>
           ))}
@@ -54,6 +54,7 @@ class TeacherCourses extends Component {
                   <li key={schoolClass.id}>
                     {schoolClass.grade} / {schoolClass.section}{" "}
                     <button
+                    className="ok_button"
                       onClick={() =>
                         this.props.history.push(
                           `/teacher/${this.state.teacherId}/course/${course.id}/schoolclass/${schoolClass.id}`

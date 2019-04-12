@@ -1,0 +1,76 @@
+table,
+th,
+td {
+  border: 2px solid rgb(179, 36, 0);
+  border-collapse: collapse;
+  background-color: rgb(255, 255, 230);
+  color: rgb(26, 41, 48);
+  margin: auto;
+  padding: 1%;
+  align-content: center;
+  text-align: center;
+}
+
+td {
+  width: 200px;
+  height: 20px;
+  font-size: 18px;
+}
+
+th {
+  height: 20px;
+  font-size: 18px;
+}
+
+.select_courses {
+  font-family: Arial, Helvetica, sans-serif;
+  position: absolute;
+  right: 5%;
+  bottom: 70%;
+}
+
+select {
+  /* General styling */
+  height: 35px;
+  width: 200px;
+  border-radius: 0;
+  padding-left: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.yellow_font {
+  color: rgb(220, 174, 29);
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.select_button {
+  border: none;
+  background-color: rgb(60, 60, 60);
+  color: rgb(255, 255, 230);
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#name {
+  margin-left: 5%;
+}
+#student_name {
+  font-size: 20px;
+}
+
+.table_courses {
+  position: absolute;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+#student-table {
+  position: absolute;
+  right: 15%;
+  bottom: 60%;
+}

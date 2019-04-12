@@ -12,8 +12,9 @@ class TeacherHome extends Component {
     return (
       <div>
         <Header />
-        <div>
+        <div className="home_background my_profile">
           <TeacherProfile />
+          <br/>
           <TeacherCourses history={this.props.history} />
           {/* <TeacherClasses history={this.props.history} /> */}
          {/* <TeacherSchoolClass /> */}

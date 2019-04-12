@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "../common/Header";
-import Footer from "../common/Footer";
 import { ADMINS } from "../../services/api";
 import { Link } from "react-router-dom";
 
@@ -34,21 +33,30 @@ class AdminsList extends Component {
 
   render() {
     const { history } = this.props;
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
         <Header />
         <div>
-            <Link to='/users'>Back to all users</Link>
+          <div className="links">
+            <Link to='/users' style={linkStyle}>Back to all users</Link>
             <br></br>
-            <Link to='/users/admins/register'>Register new admin</Link>
-          <p>Admins:</p>
+            <Link to='/users/admins/register' style={linkStyle}>Register new admin</Link>
+            </div>
+          <p className="user_list_heading">Admins</p>
+          <div className="users_list">
           {this.state.users.map(user => (
             <p key={user.id}>
               <span>{user.lastName}, {user.firstName}</span>
             </p>
           ))}
+          </div>
         </div>
-        <Footer />
       </div>
     );
   }

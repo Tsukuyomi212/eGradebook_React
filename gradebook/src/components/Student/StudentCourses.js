@@ -46,7 +46,7 @@ class StudentCourses extends Component {
     return (
       <div>
         <p id="name">
-          <span className="pretty_font">Student:</span> {this.state.firstName}{" "}
+          <span className="student_font">Courses:</span> {this.state.firstName}{" "}
           {this.state.lastName}
         </p>
         <table className="student_courses">

@@ -53,28 +53,37 @@ class ParentHome extends Component {
 
 
   render() {
+
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(175, 71, 60)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
         <Header />
-      <div>
+        <div className="home_background">
+      <div className="profile_parent">
         <p>
-          <span>First name:</span> {this.state.firstName}
+          <span className="student_font">First name:</span> {this.state.firstName}
         </p>
         <p>
-          <span>Last name:</span> {this.state.lastName}
+          <span className="student_font">Last name:</span> {this.state.lastName}
         </p>
         <p>
-          <span>Username:</span> {this.state.username}
+          <span className="student_font">Username:</span> {this.state.username}
         </p>
         <p>
-          <span>E-mail:</span> {this.state.email}
+          <span className="student_font">E-mail:</span> {this.state.email}
         </p>
-        <p>Children: </p>
+        <p className="student_font">Children: </p>
         <ul>
           {this.state.children.map(student => (
-            <li key={student.id}><Link to={`/parent/grades/${student.id}`}>{student.firstName} {student.lastName}</Link></li>
+            <li key={student.id} className="list"><Link to={`/parent/grades/${student.id}`} style={linkStyle}>{student.firstName} {student.lastName}</Link></li>
           ))}
         </ul>
+      </div>
       </div>
       </div>
     )

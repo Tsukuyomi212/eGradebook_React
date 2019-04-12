@@ -49,16 +49,16 @@ class TeacherProfile extends Component {
     return (
       <div>
         <p>
-          <span>First name:</span> {this.state.firstName}
+          <span className="teacher_profile_font">First name:</span> {this.state.firstName}
         </p>
         <p>
-          <span>Last name:</span> {this.state.lastName}
+          <span className="teacher_profile_font">Last name:</span> {this.state.lastName}
         </p>
         <p>
-          <span>Username:</span> {this.state.username}
+          <span className="teacher_profile_font">Username:</span> {this.state.username}
         </p>
         <p>
-          <span>E-mail:</span> {this.state.email}
+          <span className="teacher_profile_font">E-mail:</span> {this.state.email}
         </p>
       </div>
     );

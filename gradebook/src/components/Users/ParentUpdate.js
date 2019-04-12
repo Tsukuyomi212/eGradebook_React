@@ -89,7 +89,7 @@ class ParentUpdate extends Component {
       <div>
         <Header />
         <p className="page_heading">Update parent data</p>
-        <div className="home_background">
+        <div>
           <form onSubmit={this.handleSubmit} className="registration_form">
             <p>
               <span className="update_data_font">First name:</span>

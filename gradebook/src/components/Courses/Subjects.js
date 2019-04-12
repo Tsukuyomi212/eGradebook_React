@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { SUBJECTS } from "../../services/api";
+import Header from "../common/Header";
+import { Link } from "react-router-dom";
 
 class Subjects extends Component {
   constructor(props) {
@@ -55,29 +57,38 @@ class Subjects extends Component {
   };
 
   render() {
+    const linkStyle = {
+      textDecoration: "none",
+      color: "rgb(220, 174, 29)",
+      fontSize: "25px",
+      fontWeight: "bold"
+    };
     return (
       <div>
+        <Header />
+        <div className="courses_links">
+          <Link to="/courses" style={linkStyle}>Back to Courses</Link>
+          <br/>
+          <Link to="/subjects/create" style={linkStyle}>Create new subject</Link>
+        </div>
         <div>
-          <button onClick={() => this.props.history.push("/courses")}>
-            Back to Courses
-          </button>
-          <button onClick={() => this.props.history.push("/subjects/create")}>
-            Create new subject
-          </button>
-          <h3>Subjects: </h3>
+          <h3 className="courses_heading">Subjects: </h3>
           <ul>
             {this.state.subjects.map(subject => (
-              <li key={subject.id}>
+              <li key={subject.id} className="subject_list">
                 {subject.name} (Grade: {subject.grade}, Classes per week:{" "}
                 {subject.classesPerWeek})
                 <button
+                  className="ok_button"
                   onClick={() =>
                     this.props.history.push(`/subjects/update/${subject.id}`)
                   }
                 >
                   Update
                 </button>
-                <button onClick={() => this.deleteSubject(subject.id)}>Delete</button>
+                <button 
+                className="ok_button"
+                onClick={() => this.deleteSubject(subject.id)}>Delete</button>
               </li>
             ))}
           </ul>
